@@ -16,13 +16,13 @@ public class VillageSpawner : MonoBehaviour
 
     private readonly List<Village> villages = new();
 
-    private readonly Dictionary<Village, int> villageSpots = new Dictionary<Village, int>();
+    private readonly Queue<Vector3> availablePositions = new();
 
     private void Awake()
     {
         if (service)
         {
-
+            service.OnDevelopmentIncrease += Service_OnDevelopmentIncrease;
         }
         else
         {
@@ -30,69 +30,56 @@ public class VillageSpawner : MonoBehaviour
             return;
         }
 
-        if (service.maxDevelopment > villagePositions.Where(o=>o != null).Count())
+        for (int i = 0; i < villagePositions.Length; i++)
+        {
+            availablePositions.Enqueue(villagePositions[i].position);
+        }
+
+        if (service.maxDevelopment > villagePositions.Where(o => o != null).Count())
         {
             Debug.LogError($"NOT ENOUGH SPOTS FOR VILLAGE SPAWNER !!!! Need {service.maxDevelopment}, currently {villagePositions.Length}");
         }
 
     }
 
-    private void Update()
+    private void Service_OnDevelopmentIncrease()
     {
-        villages.RemoveAll(o => o == null);
+#pragma warning disable IDE0047
 
-        foreach(var k in villageSpots.Keys.ToArray())
+        // Skip egg turns
+        if (((service.Development / service.spawnEggEveryXDevelopment) * service.spawnEggEveryXDevelopment) != service.Development)
         {
-            if (!villages.Contains(k)) { 
-                villageSpots.Remove(k);
-            }
-        }
-
-        if (service)
-        {
-            if (villages.Count < service.development)
+            // Do not spawn too many villages
+            if (villages.Count < service.Development / (service.spawnEggEveryXDevelopment - service.spawnVillageEveryXDevelopment))
             {
                 SpawnVillage();
             }
         }
+
+#pragma warning restore IDE0047
     }
+
 
     private void SpawnVillage()
     {
         Village prefab = villagePrefabs[Random.Range(0, villagePrefabs.Length)];
 
-        int[] takenSpotsIndices = villageSpots.Values.ToArray();
-        List<Transform> freeSpots = new();
-        for (int i = 0; i < villagePositions.Length; i++)
-        {
-            if (!villagePositions[i])
-            {
-                continue;
-            }
-
-            if (takenSpotsIndices.Contains(i))
-            {
-                continue;
-            }
-
-            freeSpots.Add(villagePositions[i]);
-        }
-
-        // take closest
-        Transform spot = freeSpots
-            .OrderBy(o => Vector3.SqrMagnitude(transform.position - o.transform.position))
-            .First();
+        Vector3 position = availablePositions.Dequeue();
 
         Village instance = Instantiate(prefab, transform);
+        instance.OnDie += ()=>
+        {
+            villages.Remove(instance);
+            availablePositions.Enqueue(instance.transform.position);
+        };
 
         if (instance)
         {
-            villageSpots[instance] = villagePositions.ToList().IndexOf(spot); // lose 40 frames on this call alone
-
-            instance.transform.position = spot.transform.position;
-            instance.transform.rotation = spot.transform.rotation;
+            instance.transform.position = position;
+            instance.transform.eulerAngles = new Vector3(0f, Random.value * 360f, 0f);
         }
     }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
@@ -103,6 +90,7 @@ public class VillageSpawner : MonoBehaviour
             {
                 if (villagePositions[i])
                 {
+                    UnityEditor.Handles.color = Color.white;
                     UnityEditor.Handles.DrawWireDisc(villagePositions[i].position, Vector3.up, 1f);
                 }
             }

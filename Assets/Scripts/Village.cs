@@ -1,9 +1,12 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Village : MonoBehaviour
 {
+    public event System.Action OnDie;
+
     [SerializeField]
     private GameObject[] visualElements;
 
@@ -41,6 +44,7 @@ public class Village : MonoBehaviour
             GameObject prefab = visualElements[Random.Range(0, visualElements.Length)];
             GameObject inst = Instantiate(prefab, transform);
             inst.transform.localPosition = new Vector3(positions[i].x, 0f, positions[i].y);
+            inst.transform.localEulerAngles = new Vector3(0f, Random.value * 360f, 0f);
             managedObjects.Add(inst);
         }
     }
@@ -50,6 +54,7 @@ public class Village : MonoBehaviour
         if (other.tag == "Enemy")
         {
             // Todo play FX
+            OnDie?.Invoke();
             Destroy(this);
         }
     }

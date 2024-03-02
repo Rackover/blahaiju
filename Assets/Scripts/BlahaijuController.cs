@@ -46,13 +46,11 @@ public class BlahaijuController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log($"Blahaj hit {other}");
-            if (other.transform.parent != null)
-            {
-                other.transform.parent.gameObject.GetComponent<EnemyBehavior>().Hurt();
-            }
-            else
-            {
-                other.gameObject.GetComponent<EnemyBehavior>().Hurt();
+            var enemy = other.gameObject.GetComponentInParent<EnemyBehavior>();
+
+            if (enemy)
+            { 
+                enemy.Hurt();
             }
         }
     }
