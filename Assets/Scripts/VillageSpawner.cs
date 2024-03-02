@@ -60,6 +60,9 @@ public class VillageSpawner : MonoBehaviour
     }
 
 
+#if UNITY_EDITOR
+    [ContextMenu("SpawnVillage")]
+#endif
     private void SpawnVillage()
     {
         Village prefab = villagePrefabs[Random.Range(0, villagePrefabs.Length)];
@@ -69,8 +72,13 @@ public class VillageSpawner : MonoBehaviour
         Village instance = Instantiate(prefab, transform);
         instance.OnDie += ()=>
         {
-            villages.Remove(instance);
-            availablePositions.Enqueue(instance.transform.position);
+            if (instance)
+            {
+                villages.Remove(instance);
+                availablePositions.Enqueue(instance.transform.position);
+            }
+
+            villages.RemoveAll(o => o == null);
         };
 
         if (instance)
@@ -82,6 +90,8 @@ public class VillageSpawner : MonoBehaviour
 
 
 #if UNITY_EDITOR
+
+
     private void OnDrawGizmos()
     {
         if (villagePositions != null)

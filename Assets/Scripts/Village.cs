@@ -21,18 +21,21 @@ public class Village : MonoBehaviour
 
     private readonly List<GameObject> managedObjects =  new List<GameObject>();
 
+    [SerializeField]
+    private CollisionEventTransmitter villageCollider;
+
     private void Start()
     {
         Vector2[] positions = new Vector2[size];
 
-        positions[0] = Random.insideUnitCircle;
-        float previousAngle = Mathf.Asin(positions[0].x);
+        positions[0] = Random.insideUnitCircle * (minRange + (maxRange - minRange) * Random.value);
+        float previousAngle = Mathf.Atan2(positions[0].x, positions[0].y);
         float maxAmplitude = (1f / size) * Mathf.PI * 2f;
         for (int i = 1; i < size; i++)
         {
             float additive = previousAngle + maxAmplitude * Random.value;
             previousAngle = additive;
-            positions[i] = positions[i - 1] + new Vector2(
+            positions[i] = positions[0] + new Vector2(
                 Mathf.Sin(additive),
                 Mathf.Cos(additive)
             ) * (minRange + (maxRange - minRange) * Random.value);
@@ -45,17 +48,29 @@ public class Village : MonoBehaviour
             GameObject inst = Instantiate(prefab, transform);
             inst.transform.localPosition = new Vector3(positions[i].x, 0f, positions[i].y);
             inst.transform.localEulerAngles = new Vector3(0f, Random.value * 360f, 0f);
+            inst.name = $"visual element {i} ({positions[i]})";
             managedObjects.Add(inst);
+        }
+
+        villageCollider.onColliderEnter += VillageCollider_onColliderEnter;
+    }
+
+    private void VillageCollider_onColliderEnter(Collision obj)
+    {
+        if (obj.gameObject.tag == "Enemy")
+        {
+            if (obj.gameObject.GetComponentInParent<CarBehavior>())
+            {
+                Die();
+                return;
+            }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Die()
     {
-        if (other.tag == "Enemy")
-        {
-            // Todo play FX
-            OnDie?.Invoke();
-            Destroy(this);
-        }
+        // Todo play FX
+        OnDie?.Invoke();
+        Destroy(this);
     }
 }
