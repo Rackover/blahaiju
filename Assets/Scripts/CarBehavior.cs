@@ -45,7 +45,6 @@ public class CarBehavior : EnemyBehavior
         direction = Quaternion.AngleAxis(angle / direction.magnitude, Vector3.up) * direction;
         Vector3 newTarget = transform.position + direction * 1.3f;
 
-
         agent.destination = newTarget;
         transform.LookAt(agent.destination);
     }

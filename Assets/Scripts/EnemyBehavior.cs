@@ -16,11 +16,11 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual void Initialize(EggsService service, Vector3 spawnPosition, BlahaijuController _blahaiju)
     {
+        transform.position = spawnPosition;
+
         this.service = service;
         EggToTarget = service.Any();
         SetDestination(EggToTarget.transform.position);
-
-        transform.position = spawnPosition;
         blahaiju = _blahaiju;
     }
 
@@ -55,6 +55,7 @@ public class EnemyBehavior : MonoBehaviour
 
     protected virtual void SetDestination(Vector3 destination)
     {
+        Target = destination;
         agent.destination = destination;
         transform.LookAt(Target);
     }

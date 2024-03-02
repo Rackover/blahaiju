@@ -77,10 +77,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggs: {fileID: 0}
+  spawnDelayMultiplier: 1
+  spawnSpeedOverTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 180
+      value: -1.6717834
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   blahaiju: {fileID: 0}
-  spawnDelay: 1
   enemyProfiles:
-  - {fileID: 11400000, guid: 393b6cdce6ceebc4f9324442241bcd03, type: 2}
   - {fileID: 11400000, guid: 0a1d82bee77316c459dd51e932bda0f9, type: 2}
+  - {fileID: 11400000, guid: 393b6cdce6ceebc4f9324442241bcd03, type: 2}
   - {fileID: 11400000, guid: c6ad518714fb5c349b78dcb4fe035422, type: 2}
   spawnDistance: 100
