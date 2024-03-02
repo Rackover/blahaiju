@@ -133,10 +133,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 5675811468190314459}
+  blinkForFrames: 4
   agent: {fileID: 1785858231043750810}
   lives: 2
   body: {fileID: 8262654716714942880}
   throwbackForce: 300
+  blahajDeathThrowbackForce: 150
   villageThrowbackForce: 200
   repathTriggerDistance: 1
   incorrectTries: 2

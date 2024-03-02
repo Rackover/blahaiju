@@ -627,6 +627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf48b6631c3ed34396fd01432ab96ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderers: []
+  blinkForFrames: 8
+  blahajDeathThrowbackForce: 0
   agent: {fileID: 1799373362502347251}
   lives: 1
   body: {fileID: 3725587068388072716}

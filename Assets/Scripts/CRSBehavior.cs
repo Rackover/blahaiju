@@ -27,7 +27,7 @@ public class CRSBehavior : EnemyBehavior
         }
     }
 
-    public override void Hurt()
+    public override void Hurt(bool fromBlahaj)
     {
         //RaycastHit hit;
         Vector3 direction = transform.position - blahaiju.transform.position;
@@ -37,7 +37,7 @@ public class CRSBehavior : EnemyBehavior
         }
         else
         {
-            base.Hurt();
+            base.Hurt(fromBlahaj: false);
         }
         //if (Physics.Raycast(blahaiju.transform.position, direction, out hit))
         //{

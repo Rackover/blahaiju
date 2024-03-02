@@ -6,7 +6,6 @@ public class CarBehavior : EnemyBehavior
 {
     public Rigidbody body;
     public float throwbackForce;
-    public float blahajDeathThrowbackForce = 80;
     public float villageThrowbackForce = 100;
     public float repathTriggerDistance;
     public int incorrectTries;
@@ -92,9 +91,9 @@ public class CarBehavior : EnemyBehavior
         }
     }
 
-    public override void Hurt()
+    public override void Hurt(bool fromBlahaj)
     {
-        base.Hurt();
+        base.Hurt(fromBlahaj);
         Bump();
     }
 
@@ -114,13 +113,12 @@ public class CarBehavior : EnemyBehavior
             {
                 if (enemy.lives > 1)
                 {
-                    Hurt();
-                    enemy.Hurt();
+                    Hurt(fromBlahaj: false);
+                    enemy.Hurt(fromBlahaj: false);
                 }
                 else
                 {
                     enemy.Die();
-                    blahaiju.Bump(blahaiju.transform.position - transform.position, blahajDeathThrowbackForce);
                 }
             }
             else
