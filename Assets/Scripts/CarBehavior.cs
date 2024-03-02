@@ -12,12 +12,16 @@ public class CarBehavior : EnemyBehavior
     public Vector2 angleRange;
     public CollisionEventTransmitter collisionEventTransmitter;
 
-    private void Awake()
+    private void OnEnable()
     {
         collisionEventTransmitter.onColliderEnter += CollisionEventTransmitter_onCollisionEnter;
     }
 
     private void OnDestroy()
+    {
+        collisionEventTransmitter.onColliderEnter -= CollisionEventTransmitter_onCollisionEnter;
+    }
+    private void OnDisable()
     {
         collisionEventTransmitter.onColliderEnter -= CollisionEventTransmitter_onCollisionEnter;
     }
@@ -111,12 +115,12 @@ public class CarBehavior : EnemyBehavior
 
             if (enemy)
             {
-                if (enemy.lives > 1)
+                if (enemy.GetType() == typeof(CarBehavior))
                 {
                     Hurt(fromBlahaj: false);
                     enemy.Hurt(fromBlahaj: false);
                 }
-                else
+                else if (enemy.GetType() != typeof(PoliticianBehavior))
                 {
                     enemy.Die();
                 }

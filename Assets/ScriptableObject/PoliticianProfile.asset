@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b3f4e3028ef8a45bbd50543fff9018, type: 3}
-  m_Name: CarProfile
+  m_Name: PoliticianProfile
   m_EditorClassIdentifier: 
   prefab: {fileID: 8997294477005952190, guid: cc4fe5fdb36574d4aba8567f8846e733, type: 3}
   spawnCurve:
