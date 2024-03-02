@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemiesService : MonoBehaviour
 {
+    public BlahaijuController blahaiju;
     public Transform target;
     public float spawnDelay;
     private float spawnTimer;
@@ -43,6 +44,6 @@ public class EnemiesService : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         EnemyBehavior walker = Instantiate(_prefab);
-        walker.Initialize(target.position, spawnPosition);
+        walker.Initialize(target.position, spawnPosition, blahaiju);
     }
 }

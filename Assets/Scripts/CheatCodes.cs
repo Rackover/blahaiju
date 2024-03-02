@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheatCodes : MonoBehaviour
 {
+    public BlahaijuController blahaiju;
     public Vector3 target;
     public EnemyBehavior enemyPrefab;
     public float spawnDistance;
@@ -22,6 +23,6 @@ public class CheatCodes : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         EnemyBehavior walker = Instantiate(enemyPrefab);
-        walker.Initialize(target, spawnPosition);
+        walker.Initialize(target, spawnPosition, blahaiju);
     }
 }

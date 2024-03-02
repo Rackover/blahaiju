@@ -5,24 +5,19 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    protected BlahaijuController blahaiju;
+    protected Vector3 eggsTarget;
     public NavMeshAgent agent;
 
-    public void Initialize(Vector3 _target, Vector3 _position)
+    public void Initialize(Vector3 _target, Vector3 _position, BlahaijuController _blahaiju)
     {
+        eggsTarget = _target;
         agent.destination = _target;
         transform.position = _position;
+        blahaiju = _blahaiju;
     }
 
-    //void OnCollisionEnter(Collision _col)
-    //{ 
-    //    if (_col.gameObject.CompareTag("Player"))
-    //    {
-    //        Hurt();
-    //    }
-                  
-    //}
-
-    public void Hurt()
+    public virtual void Hurt()
     {
         Die();
     }
