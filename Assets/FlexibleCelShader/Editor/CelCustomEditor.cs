@@ -90,6 +90,7 @@ public class CelCustomEditor : MaterialEditor
         showProperty("_NormalTex");
         showProperty("_EmmisTex");
         showProperty("_Color");
+        showProperty("_ColorOverride");
 
         GUILayout.Space(spacing);
         EditorGUILayout.LabelField("Lighting Ramp", EditorStyles.boldLabel);
