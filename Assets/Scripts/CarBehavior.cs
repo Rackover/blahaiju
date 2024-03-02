@@ -9,6 +9,17 @@ public class CarBehavior : EnemyBehavior
     public float repathTriggerDistance;
     public int incorrectTries;
     public Vector2 angleRange;
+    public CollisionEventTransmitter collisionEventTransmitter;
+
+    private void Awake()
+    {
+        collisionEventTransmitter.onColliderEnter += CollisionEventTransmitter_onCollisionEnter;
+    }
+
+    private void OnDestroy()
+    {
+        collisionEventTransmitter.onColliderEnter -= CollisionEventTransmitter_onCollisionEnter;
+    }
 
     public override void Initialize(Vector3 _target, Vector3 _position, BlahaijuController _blahaiju)
     {
@@ -54,5 +65,30 @@ public class CarBehavior : EnemyBehavior
         base.Hurt();
         Vector3 direction = transform.position - blahaiju.transform.position;
         body.AddForce(direction.normalized * throwbackForce, ForceMode.Impulse);
+    }
+
+    private void CollisionEventTransmitter_onCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            var enemy = other.gameObject.GetComponentInParent<EnemyBehavior>();
+
+            if (enemy)
+            {
+                if (enemy.lives>1)
+                {
+                    Hurt();
+                    enemy.Hurt();
+                }
+                else
+                {
+                    enemy.Die();
+                }
+            }
+            else
+            {
+                throw new System.Exception();
+            }
+        }
     }
 }
