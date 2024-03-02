@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class EnemiesService : MonoBehaviour
 {
+    [SerializeField]
+    private EggsService eggs;
+
     public BlahaijuController blahaiju;
-    public Transform target;
     public float spawnDelay;
     private float spawnTimer;
     private float gameTime;
@@ -42,6 +44,7 @@ public class EnemiesService : MonoBehaviour
         float rand = (UnityEngine.Random.value * Time.time % 1f) * Mathf.PI * 2f;
         Vector3 spawnPosition = new Vector3(Mathf.Sin(rand), 0f, Mathf.Cos(rand)) * spawnDistance;
         EnemyBehavior walker = Instantiate(_prefab);
-        walker.Initialize(target.position, spawnPosition, blahaiju);
+
+        walker.Initialize(eggs, spawnPosition, blahaiju);
     }
 }
