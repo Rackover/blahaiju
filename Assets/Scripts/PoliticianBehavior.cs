@@ -29,14 +29,7 @@ public class PoliticianBehavior : EnemyBehavior
 
             if (enemy)
             {
-                if (enemy.lives > 1)
-                {
-                    enemy.Hurt();
-                }
-                else
-                {
-                    enemy.Die();
-                }
+                enemy.Hurt(fromBlahaj: false, disableCRSCheck: true);
             }
             else
             {

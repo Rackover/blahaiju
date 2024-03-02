@@ -46,7 +46,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public virtual void Hurt(bool fromBlahaj)
+    public virtual void Hurt(bool fromBlahaj, bool disableCRSCheck)
     {
         hurtThisFrame = true;
 

@@ -95,9 +95,9 @@ public class CarBehavior : EnemyBehavior
         }
     }
 
-    public override void Hurt(bool fromBlahaj)
+    public override void Hurt(bool fromBlahaj, bool disableCRSCheck)
     {
-        base.Hurt(fromBlahaj);
+        base.Hurt(fromBlahaj, disableCRSCheck);
         Bump();
     }
 
@@ -117,12 +117,8 @@ public class CarBehavior : EnemyBehavior
             {
                 if (enemy.GetType() == typeof(CarBehavior))
                 {
-                    Hurt(fromBlahaj: false);
-                    enemy.Hurt(fromBlahaj: false);
-                }
-                else if (enemy.GetType() != typeof(PoliticianBehavior))
-                {
-                    enemy.Die();
+                    Hurt(fromBlahaj: false, disableCRSCheck: true);
+                    enemy.Hurt(fromBlahaj: false, disableCRSCheck: true);
                 }
             }
             else
