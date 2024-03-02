@@ -52,7 +52,7 @@ public class BlahaijuController : MonoBehaviour
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, LayerMask.GetMask("Default")))
         {
             destination = hit.point;
             float mag = Vector3.Magnitude(destination - transform.position);
