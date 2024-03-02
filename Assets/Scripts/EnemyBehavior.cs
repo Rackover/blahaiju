@@ -12,4 +12,23 @@ public class EnemyBehavior : MonoBehaviour
         agent.destination = _target;
         transform.position = _position;
     }
+
+    //void OnCollisionEnter(Collision _col)
+    //{ 
+    //    if (_col.gameObject.CompareTag("Player"))
+    //    {
+    //        Hurt();
+    //    }
+                  
+    //}
+
+    public void Hurt()
+    {
+        Die();
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
 }

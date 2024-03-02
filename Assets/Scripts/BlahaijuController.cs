@@ -38,14 +38,15 @@ public class BlahaijuController : MonoBehaviour
 
     private void Awake()
     {
-        collisionEventTransmitter.onColliderEnter += CollisionEventTransmitter_onColliderEnter;
+        collisionEventTransmitter.onTriggerEnter += CollisionEventTransmitter_onTriggerEnter;
     }
 
-    private void CollisionEventTransmitter_onColliderEnter(Collision other)
+    private void CollisionEventTransmitter_onTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log($"Blahaj hit {other}");
+            other.gameObject.GetComponent<EnemyBehavior>().Hurt();
         }
     }
 

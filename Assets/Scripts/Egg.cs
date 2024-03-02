@@ -11,7 +11,14 @@ public class Egg : MonoBehaviour
         GameObject other = _collision.gameObject;
         if (_collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other);
+            if (other.transform.parent != null)
+            {
+                Destroy(other.transform.parent);
+            }
+            else
+            {
+                Destroy(other);
+            }
             GetHurt();
         }
     }
