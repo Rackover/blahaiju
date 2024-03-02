@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617534145784156731}
-  m_Material: {fileID: 13400000, guid: c3cdd2a7c8780354d8d032b9e9c1ef04, type: 2}
+  m_Material: {fileID: 13400000, guid: 68b643b190a1ded4a9f73bdb79d2bafb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -225,7 +225,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3420230730391281397}
-  m_Material: {fileID: 13400000, guid: c3cdd2a7c8780354d8d032b9e9c1ef04, type: 2}
+  m_Material: {fileID: 13400000, guid: 68b643b190a1ded4a9f73bdb79d2bafb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -358,7 +358,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5322959983822639679}
-  m_Material: {fileID: 13400000, guid: c3cdd2a7c8780354d8d032b9e9c1ef04, type: 2}
+  m_Material: {fileID: 13400000, guid: 68b643b190a1ded4a9f73bdb79d2bafb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1799373362502347251}
+  lives: 1
   body: {fileID: 3725587068388072716}
   throwbackForce: 20
   distanceToAim: 15

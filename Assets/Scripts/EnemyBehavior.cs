@@ -8,18 +8,23 @@ public class EnemyBehavior : MonoBehaviour
     protected BlahaijuController blahaiju;
     protected Vector3 eggsTarget;
     public NavMeshAgent agent;
+    public int lives;
 
-    public void Initialize(Vector3 _target, Vector3 _position, BlahaijuController _blahaiju)
+    public virtual void Initialize(Vector3 _target, Vector3 _position, BlahaijuController _blahaiju)
     {
         eggsTarget = _target;
         agent.destination = _target;
+        transform.LookAt(eggsTarget);
         transform.position = _position;
         blahaiju = _blahaiju;
     }
 
     public virtual void Hurt()
     {
-        Die();
+        if (--lives<=0)
+        {
+            Die();
+        }
     }
 
     void Die()

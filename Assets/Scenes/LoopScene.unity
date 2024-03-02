@@ -1658,6 +1658,7 @@ MonoBehaviour:
   enemyProfiles:
   - {fileID: 11400000, guid: 393b6cdce6ceebc4f9324442241bcd03, type: 2}
   - {fileID: 11400000, guid: 0a1d82bee77316c459dd51e932bda0f9, type: 2}
+  - {fileID: 11400000, guid: c6ad518714fb5c349b78dcb4fe035422, type: 2}
   spawnDistance: 100
 --- !u!4 &1711750081
 Transform:
