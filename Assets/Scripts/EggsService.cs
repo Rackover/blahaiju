@@ -6,7 +6,7 @@ public class EggsService : MonoBehaviour
 {
     public float eggSpawnDelay;
     private float eggSpawnTimer;
-    private int development;
+    public int development;
     public int initialDevelopment;
     public int maxDevelopment;
     public List<Egg> eggs;
