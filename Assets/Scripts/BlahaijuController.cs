@@ -36,6 +36,12 @@ public class BlahaijuController : MonoBehaviour
     private float forceMultiplier = 1f;
     private Vector3 destination;
 
+    public void Bump(Vector3 towards, float force)
+    {
+        body.AddForce(towards.normalized * force, ForceMode.Impulse);
+    }
+
+
     private void Awake()
     {
         collisionEventTransmitter.onTriggerEnter += CollisionEventTransmitter_onTriggerEnter;

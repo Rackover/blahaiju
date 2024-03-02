@@ -21,7 +21,7 @@ public class CollisionEventTransmitter : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        onColliderEnter.Invoke(collision);
+        onColliderEnter?.Invoke(collision);
     }
 
     private void OnCollisionExit(Collision collision)
