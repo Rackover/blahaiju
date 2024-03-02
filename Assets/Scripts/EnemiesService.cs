@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,8 +38,8 @@ public class EnemiesService : MonoBehaviour
 
     void SpawnEnemy(EnemyBehavior _prefab)
     {
-        Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
-        spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
+        float rand = (UnityEngine.Random.value * Time.time % 1f) * Mathf.PI * 2f;
+        Vector3 spawnPosition = new Vector3(Mathf.Sin(rand), 0f, Mathf.Cos(rand)) * spawnDistance;
         EnemyBehavior walker = Instantiate(_prefab);
         walker.Initialize(target.position, spawnPosition);
     }
