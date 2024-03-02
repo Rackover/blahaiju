@@ -134,7 +134,7 @@ MonoBehaviour:
   agent: {fileID: 1785858231043750810}
   lives: 2
   body: {fileID: 8262654716714942880}
-  throwbackForce: 20
+  throwbackForce: 150
   repathTriggerDistance: 1
   incorrectTries: 2
   angleRange: {x: 1000, y: 2000}
