@@ -11,21 +11,21 @@ public class Egg : MonoBehaviour
         GameObject other = _collision.gameObject;
         if (_collision.gameObject.CompareTag("Enemy"))
         {
-            if (other.transform.parent != null)
+            if (other.transform.parent != null && other.transform.parent.GetComponent<EnemyBehavior>() != null)
             {
-                Destroy(other.transform.parent);
+                Destroy(other.transform.parent.gameObject);
             }
             else
             {
                 Destroy(other);
             }
+            
             GetHurt();
         }
     }
 
     void GetHurt()
     {
-        eggsService.LoseDevelopment();
-        gameObject.SetActive(false);
+        eggsService.LoseEgg(this);
     }
 }
