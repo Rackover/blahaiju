@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6122888cc9028c42a62e1666a6b0c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceAmount: 2000
+  forceAmount: 9001
   precisionOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -95,6 +95,15 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.01634873
     - serializedVersion: 3
+      time: 3.3140373
+      value: 1.5448676
+      inSlope: 0.41030648
+      outSlope: 0.41030648
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 20.034714
       value: 4.916046
       inSlope: 0.72467387
@@ -138,7 +147,7 @@ Rigidbody:
   m_GameObject: {fileID: 724418500496786957}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0.8
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

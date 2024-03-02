@@ -11,6 +11,7 @@ public class CheatCodes : MonoBehaviour
     public Vector3 target;
     public EnemyBehavior enemyPrefab;
     public CarBehavior carPrefab;
+    public CRSBehavior crsPrefab;
     public float spawnDistance;
 
 
@@ -20,10 +21,24 @@ public class CheatCodes : MonoBehaviour
         {
             SpawnEnemy();
         }
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             SpawnCar();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SpawnRiotShield();
+        }
+    }
+
+    void SpawnRiotShield()
+    {
+        Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
+        spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
+        CRSBehavior walker = Instantiate(crsPrefab);
+        walker.Initialize(eggs, spawnPosition, blahaiju);
     }
 
     void SpawnCar()

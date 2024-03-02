@@ -27,17 +27,17 @@ public class CRSBehavior : EnemyBehavior
         }
     }
 
-    public override void Hurt()
+    public override void Hurt(bool fromBlahaj, bool disableCRSCheck)
     {
         //RaycastHit hit;
         Vector3 direction = transform.position - blahaiju.transform.position;
-        if (Vector3.Dot(direction.normalized, transform.forward) <0)
+        if (!disableCRSCheck && Vector3.Dot(direction.normalized, transform.forward) < 0)
         {
             body.AddForce(direction.normalized * throwbackForce, ForceMode.Impulse);
         }
         else
         {
-            base.Hurt();
+            base.Hurt(fromBlahaj, disableCRSCheck);
         }
         //if (Physics.Raycast(blahaiju.transform.position, direction, out hit))
         //{

@@ -55,7 +55,7 @@ public class BlahaijuController : MonoBehaviour
 
             if (enemy)
             { 
-                enemy.Hurt();
+                enemy.Hurt(fromBlahaj: true, disableCRSCheck: false);
             }
         }
     }

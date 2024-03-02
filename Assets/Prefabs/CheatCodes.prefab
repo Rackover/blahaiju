@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82b997651ce6fa45ad2ddea369f81d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eggs: {fileID: 0}
+  blahaiju: {fileID: 0}
   target: {x: 0, y: 1.5, z: 0}
   enemyPrefab: {fileID: 3279995099623428662, guid: d95aa879008418a4395da9750c55a75d, type: 3}
+  carPrefab: {fileID: 8997294477005952190, guid: cc4fe5fdb36574d4aba8567f8846e733, type: 3}
+  crsPrefab: {fileID: 4341635862355808432, guid: 3555afc95091bef4fa7af855fd609571, type: 3}
   spawnDistance: 40

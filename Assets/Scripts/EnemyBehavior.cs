@@ -11,17 +11,23 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     private Renderer[] renderers = new Renderer[0];
 
+    [SerializeField]
+    private int blinkForFrames = 8;
+
+    [SerializeField]
+    private float blahajDeathThrowbackForce = 130;
 
     protected BlahaijuController blahaiju;
     public NavMeshAgent agent;
     public int lives;
 
-    private Material[] dynaMats;
-
     protected EggsService service;
 
+    private Material[] dynaMats;
+
+
     private bool hurtThisFrame = false;
-    private bool wasHurtPreviousFrame = false;
+    private int restoreAtFrame;
 
     public virtual void Initialize(EggsService service, Vector3 spawnPosition, BlahaijuController _blahaiju)
     {
@@ -40,9 +46,17 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public virtual void Hurt()
+    public virtual void Hurt(bool fromBlahaj, bool disableCRSCheck)
     {
         hurtThisFrame = true;
+
+        if (fromBlahaj && blahajDeathThrowbackForce > 0f)
+        {
+            blahaiju.Bump(
+                blahaiju.transform.position - transform.position,
+                blahajDeathThrowbackForce
+            );
+        }
 
         if (--lives<=0)
         {
@@ -68,15 +82,15 @@ public class EnemyBehavior : MonoBehaviour
         if (hurtThisFrame)
         {
             hurtThisFrame = false;
-            wasHurtPreviousFrame = true;
+            restoreAtFrame = Time.frameCount + blinkForFrames;
             for (int i = 0; i < dynaMats.Length; i++)
             {
                 dynaMats[i].SetColor("_ColorOverride", new Color(1f, 1f, 1f, 1f));
             }
         }
-        else if (wasHurtPreviousFrame)
+        else if (restoreAtFrame != 0 && restoreAtFrame <= Time.frameCount)
         {
-            wasHurtPreviousFrame = false;
+            restoreAtFrame = 0;
             for (int i = 0; i < dynaMats.Length; i++)
             {
                 dynaMats[i].SetColor("_ColorOverride", new Color(1f, 1f, 1f, 0f));

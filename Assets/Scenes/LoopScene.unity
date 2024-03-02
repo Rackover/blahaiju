@@ -1579,10 +1579,6 @@ PrefabInstance:
       propertyPath: blahaiju
       value: 
       objectReference: {fileID: 1655430938}
-    - target: {fileID: 5150073807174666824, guid: c525c8adbe27ee546bbbc719f15ecb9e, type: 3}
-      propertyPath: carPrefab
-      value: 
-      objectReference: {fileID: 8997294477005952190, guid: cc4fe5fdb36574d4aba8567f8846e733, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

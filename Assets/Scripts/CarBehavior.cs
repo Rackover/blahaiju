@@ -6,7 +6,6 @@ public class CarBehavior : EnemyBehavior
 {
     public Rigidbody body;
     public float throwbackForce;
-    public float blahajDeathThrowbackForce = 80;
     public float villageThrowbackForce = 100;
     public float repathTriggerDistance;
     public int incorrectTries;
@@ -96,9 +95,9 @@ public class CarBehavior : EnemyBehavior
         }
     }
 
-    public override void Hurt()
+    public override void Hurt(bool fromBlahaj, bool disableCRSCheck)
     {
-        base.Hurt();
+        base.Hurt(fromBlahaj, disableCRSCheck);
         Bump();
     }
 
@@ -118,13 +117,8 @@ public class CarBehavior : EnemyBehavior
             {
                 if (enemy.GetType() == typeof(CarBehavior))
                 {
-                    Hurt();
-                    enemy.Hurt();
-                }
-                else if (enemy.GetType() != typeof(PoliticianBehavior))
-                {
-                    enemy.Die();
-                    blahaiju.Bump(blahaiju.transform.position - transform.position, blahajDeathThrowbackForce);
+                    Hurt(fromBlahaj: false, disableCRSCheck: true);
+                    enemy.Hurt(fromBlahaj: false, disableCRSCheck: true);
                 }
             }
             else
