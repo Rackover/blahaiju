@@ -3,6 +3,7 @@
 	Properties
 	{
 		_Color("Global Color Modifier", Color) = (1, 1, 1, 1)
+		_ColorOverride("Global Color Override", Color) = (1, 1, 1, 0)
 		_MainTex("Texture", 2D) = "white" {}
 		_NormalTex("Normal", 2D) = "bump" {}
 		_EmmisTex("Emission", 2D) = "black" {}
@@ -82,6 +83,7 @@
 			}
 
 			float4    _Color;
+			float4	_ColorOverride;
 			sampler2D _MainTex;
 			uniform float4 _MainTex_ST;
 			sampler2D _NormalTex;
@@ -147,7 +149,8 @@
 				// Apply light multiplier and color
 				col *= lightMultiplier;
 				col *= _Color * mixColor;
-
+				col = lerp(col, _ColorOverride, _ColorOverride.a);
+	
 				// Apply soft Fresnel
 				float rampPercentSoftFresnel = 1 - ((1 - rampLevel / _RampLevels) * (1 - _FresnelShadowDropoff));
 				col.rgb = col.rgb + _FresnelColor*(_FresnelBrightness*10 - fresnelFactor*_FresnelBrightness*10) * rampPercentSoftFresnel;

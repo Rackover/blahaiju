@@ -42,7 +42,7 @@ public class EnemiesService : MonoBehaviour
     {
         float random = 0;
         float enemySpawnChance = 0;
-        for (int i = 0; i < enemyProfiles.Count; i++)
+        for (int i = 1; i < enemyProfiles.Count; i++)
         {
             random = UnityEngine.Random.Range(0.0f, 1.0f);
             enemySpawnChance = enemyProfiles[i].spawnCurve.Evaluate(gameTime / enemyProfiles[i].spawnCurveDuration);

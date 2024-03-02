@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d81f1db355b8f4aa0d8352be2872a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 5675811468190314459}
   agent: {fileID: 1785858231043750810}
   lives: 2
   body: {fileID: 8262654716714942880}
@@ -242,7 +244,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 3, z: 11}
+  m_Size: {x: 3, y: 1.6, z: 5}
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &2169477163605044094
 MonoBehaviour:
