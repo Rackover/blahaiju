@@ -134,8 +134,8 @@ MonoBehaviour:
   agent: {fileID: 1785858231043750810}
   lives: 2
   body: {fileID: 8262654716714942880}
-  throwbackForce: 150
-  villageThrowbackForce: 100
+  throwbackForce: 300
+  villageThrowbackForce: 200
   repathTriggerDistance: 1
   incorrectTries: 2
   angleRange: {x: 1000, y: 2000}
@@ -171,7 +171,7 @@ Rigidbody:
   m_GameObject: {fileID: 2847247703367613254}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
