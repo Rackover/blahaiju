@@ -29,19 +29,25 @@ public class CRSBehavior : EnemyBehavior
 
     public override void Hurt()
     {
-        RaycastHit hit;
+        //RaycastHit hit;
         Vector3 direction = transform.position - blahaiju.transform.position;
-        if (Physics.Raycast(blahaiju.transform.position, direction, out hit))
+        if (Vector3.Dot(direction.normalized, transform.forward) <0)
         {
-            if (hit.collider.gameObject.CompareTag("Shield"))
-            {
-                body.AddForce(direction.normalized * throwbackForce, ForceMode.Impulse);
-            }
-            else
-            {
-                base.Hurt();
-            }
-            
+            body.AddForce(direction.normalized * throwbackForce, ForceMode.Impulse);
         }
+        else
+        {
+            base.Hurt();
+        }
+        //if (Physics.Raycast(blahaiju.transform.position, direction, out hit))
+        //{
+        //    if (hit.collider.gameObject.CompareTag("Shield"))
+        //    {
+        //    }
+        //    else
+        //    {
+        //    }
+            
+        //}
     }
 }
