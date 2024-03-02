@@ -59,9 +59,15 @@ public class Village : MonoBehaviour
     {
         if (obj.gameObject.tag == "Enemy")
         {
-            if (obj.gameObject.GetComponentInParent<CarBehavior>())
+            var car = obj.gameObject.GetComponentInParent<CarBehavior>();
+            if (car)
             {
+
                 Die();
+
+                Vector3 direction = car.transform.position - transform.position;
+
+                car.body.AddForce(direction.normalized * car.villageThrowbackForce, ForceMode.Impulse);
                 return;
             }
         }
@@ -71,6 +77,6 @@ public class Village : MonoBehaviour
     {
         // Todo play FX
         OnDie?.Invoke();
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

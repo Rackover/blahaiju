@@ -6,6 +6,7 @@ public class CarBehavior : EnemyBehavior
 {
     public Rigidbody body;
     public float throwbackForce;
+    public float villageThrowbackForce = 100;
     public float repathTriggerDistance;
     public int incorrectTries;
     public Vector2 angleRange;
@@ -21,33 +22,49 @@ public class CarBehavior : EnemyBehavior
         collisionEventTransmitter.onColliderEnter -= CollisionEventTransmitter_onCollisionEnter;
     }
 
-    public override void Initialize(Vector3 _target, Vector3 _position, BlahaijuController _blahaiju)
+    public override void Initialize(EggsService service, Vector3 position, BlahaijuController _blahaiju)
     {
-        base.Initialize(_target, _position, _blahaiju);
+        base.Initialize(service, position, _blahaiju);
+    }
+
+    protected override void SetDestination(Vector3 destination)
+    {
+        base.SetDestination(destination);
         SetIncorrectDestination();
-        transform.LookAt(agent.destination);
     }
 
     void SetIncorrectDestination()
     {
-        Vector3 direction = eggsTarget - transform.position;
+        Vector3 direction = Target - transform.position;
         float angle = Random.Range(angleRange.x, angleRange.y);
         if ((int)Random.Range(0, 2) == 1)
         {
             angle *= -1;
         }
+
         direction = Quaternion.AngleAxis(angle / direction.magnitude, Vector3.up) * direction;
         Vector3 newTarget = transform.position + direction * 1.3f;
+
+
         agent.destination = newTarget;
+        transform.LookAt(agent.destination);
     }
 
     void SetCorrectDestination()
     {
-        agent.destination = eggsTarget;
+        agent.destination = Target;
+        transform.LookAt(Target);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
+        if (service.GameFinished)
+        {
+            return;
+        }
+
         if (agent.remainingDistance < repathTriggerDistance)
         {
             if (--incorrectTries<=0)

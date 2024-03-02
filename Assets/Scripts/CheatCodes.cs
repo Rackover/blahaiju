@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CheatCodes : MonoBehaviour
 {
+    [SerializeField]
+    private EggsService eggs;
+
     public BlahaijuController blahaiju;
     public Vector3 target;
     public EnemyBehavior enemyPrefab;
+    public CarBehavior carPrefab;
     public float spawnDistance;
 
 
@@ -16,6 +20,18 @@ public class CheatCodes : MonoBehaviour
         {
             SpawnEnemy();
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnCar();
+        }
+    }
+
+    void SpawnCar()
+    {
+        Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
+        spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
+        CarBehavior walker = Instantiate(carPrefab);
+        walker.Initialize(eggs, spawnPosition, blahaiju);
     }
 
     void SpawnEnemy()
@@ -23,6 +39,6 @@ public class CheatCodes : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         EnemyBehavior walker = Instantiate(enemyPrefab);
-        walker.Initialize(target, spawnPosition, blahaiju);
+        walker.Initialize(eggs, spawnPosition, blahaiju);
     }
 }

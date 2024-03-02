@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EggsService : MonoBehaviour
 {
     public int Development => development;
+
+    public bool GameFinished { private set; get; } = false;
 
     public event Action OnDevelopmentIncrease;
 
@@ -57,6 +60,11 @@ public class EggsService : MonoBehaviour
 
     void Update()
     {
+        if (GameFinished)
+        {
+            return;
+        }
+
         developmentTimer += Time.deltaTime;
         if (developmentTimer>developEveryXSeconds)
         {
@@ -100,6 +108,11 @@ public class EggsService : MonoBehaviour
         }
     }
 
+    public Egg Any()
+    {
+        return activeEggs[UnityEngine.Random.Range(0, activeEggs.Count)];
+    }
+
     public void LoseEgg(Egg egg)
     {
         Debug.Log($"Lost egg ${egg}");
@@ -117,6 +130,8 @@ public class EggsService : MonoBehaviour
             {
                 // Lost!
                 Debug.LogError($"Game over!");
+
+                GameFinished = true;
             }
         }
     }

@@ -8,15 +8,22 @@ public class CRSBehavior : EnemyBehavior
     public float throwbackForce;
     public float distanceToAim;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
+        if (service.GameFinished)
+        {
+            return;
+        }
+
         if (Vector3.Distance(transform.position, blahaiju.transform.position) < distanceToAim)
         {
             agent.destination = blahaiju.transform.position;
         }
-        else if (agent.destination != eggsTarget)
+        else if (agent.destination != Target)
         {
-            agent.destination = eggsTarget;
+            agent.destination = Target;
         }
     }
 

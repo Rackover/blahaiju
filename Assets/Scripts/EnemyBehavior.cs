@@ -5,17 +5,22 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    protected Egg EggToTarget { private set; get; }
+    protected Vector3 Target { private set; get; }
+
     protected BlahaijuController blahaiju;
-    protected Vector3 eggsTarget;
     public NavMeshAgent agent;
     public int lives;
 
-    public virtual void Initialize(Vector3 _target, Vector3 _position, BlahaijuController _blahaiju)
+    protected EggsService service;
+
+    public virtual void Initialize(EggsService service, Vector3 spawnPosition, BlahaijuController _blahaiju)
     {
-        eggsTarget = _target;
-        agent.destination = _target;
-        transform.LookAt(eggsTarget);
-        transform.position = _position;
+        this.service = service;
+        EggToTarget = service.Any();
+        SetDestination(EggToTarget.transform.position);
+
+        transform.position = spawnPosition;
         blahaiju = _blahaiju;
     }
 
@@ -30,5 +35,27 @@ public class EnemyBehavior : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+    }
+
+    protected virtual void Update()
+    {
+        if (service.GameFinished)
+        {
+            Destroy(this);
+            return;
+        }
+
+        if (EggToTarget == null)
+        {
+            EggToTarget = service.Any();
+            SetDestination(EggToTarget.transform.position);
+        }
+    }
+
+
+    protected virtual void SetDestination(Vector3 destination)
+    {
+        agent.destination = destination;
+        transform.LookAt(Target);
     }
 }
