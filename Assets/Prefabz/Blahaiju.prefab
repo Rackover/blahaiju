@@ -305,7 +305,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a6a16bfbc1d46334bbee070920d72eb5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 20d7e2a2070ad854088d714b1ac404eb, type: 2}
+      objectReference: {fileID: 2100000, guid: 6ce6b4c377df19a4493acd04fbe505d7, type: 2}
     - target: {fileID: 919132149155446097, guid: a6a16bfbc1d46334bbee070920d72eb5, type: 3}
       propertyPath: m_Name
       value: blahaiju_gabarit

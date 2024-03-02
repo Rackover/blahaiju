@@ -78,15 +78,6 @@ public class EggsService : MonoBehaviour
         egg.gameObject.SetActive(true);
 
         activeEggs.Add(egg);
-
-        //for (int i = 0; i < eggs.Count; i++)
-        //{
-        //    if (!eggs[i].gameObject.activeSelf)
-        //    {
-        //        eggs[i].gameObject.SetActive(true);
-        //        break;
-        //    }
-        //}
     }
 
     void IncrementDevelopment()
@@ -111,17 +102,22 @@ public class EggsService : MonoBehaviour
 
     public void LoseEgg(Egg egg)
     {
-        activeEggs.Remove(egg);
-        availableEggSpots.Enqueue(egg.transform.position);
-
-        Pooler.Pool(this, egg);
-
-        development = development / spawnEggEveryXDevelopment * spawnEggEveryXDevelopment - 1;
-
-        if (activeEggs.Count == 0)
+        Debug.Log($"Lost egg ${egg}");
+        if (activeEggs.Remove(egg))
         {
-            // Lost!
-            Debug.LogError($"Game over!");
+            availableEggSpots.Enqueue(egg.transform.position);
+
+            Pooler.Pool(this, egg);
+
+            development = (development / spawnEggEveryXDevelopment - 1) * spawnEggEveryXDevelopment;
+
+            development = Mathf.Max(0, development);
+
+            if (activeEggs.Count == 0)
+            {
+                // Lost!
+                Debug.LogError($"Game over!");
+            }
         }
     }
 #if UNITY_EDITOR
