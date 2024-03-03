@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EggsService : MonoBehaviour
 {
+    public EnemiesService enemiesService;
     public EndPanel endPanel;
     public int Development => development;
 
@@ -96,9 +97,7 @@ public class EggsService : MonoBehaviour
         if (development>=maxDevelopment)
         {
             //Win
-            GameFinished = true;
-            endPanel.gameObject.SetActive(true );
-            endPanel.Initialize(true);
+            enemiesService.PreventSpawn(false);
         }
         else
         {
@@ -112,6 +111,13 @@ public class EggsService : MonoBehaviour
         }
     }
 
+    public void Win()
+    {
+        GameFinished = true;
+        endPanel.gameObject.SetActive(true);
+        endPanel.Initialize(true);
+    }
+
     public Egg Any()
     {
         return activeEggs[UnityEngine.Random.Range(0, activeEggs.Count)];
@@ -120,6 +126,10 @@ public class EggsService : MonoBehaviour
     public void LoseEgg(Egg egg)
     {
         Debug.Log($"Lost egg ${egg}");
+        if (development >= maxDevelopment)
+        {
+            enemiesService.PreventSpawn(true);
+        }
         if (activeEggs.Remove(egg))
         {
             availableEggSpots.Enqueue(egg.transform.position);

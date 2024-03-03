@@ -31,9 +31,9 @@ public class CarBehavior : EnemyBehavior
         collisionEventTransmitter.onColliderEnter -= CollisionEventTransmitter_onCollisionEnter;
     }
 
-    public override void Initialize(EggsService service, Vector3 position, BlahaijuController _blahaiju)
+    public override void Initialize(EggsService service, Vector3 position, BlahaijuController _blahaiju, EnemiesService _enemiesService)
     {
-        base.Initialize(service, position, _blahaiju);
+        base.Initialize(service, position, _blahaiju, _enemiesService);
     }
 
     protected override void SetDestination(Vector3 destination)
@@ -164,6 +164,10 @@ public class CarBehavior : EnemyBehavior
                 if (enemy.GetType() == typeof(CarBehavior))
                 {
                     Hurt(fromBlahaj: false, disableCRSCheck: true);
+                    enemy.Hurt(fromBlahaj: false, disableCRSCheck: true);
+                }
+                else if (enemy.GetType() != typeof(PoliticianBehavior))
+                {
                     enemy.Hurt(fromBlahaj: false, disableCRSCheck: true);
                 }
             }

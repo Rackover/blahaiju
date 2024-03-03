@@ -6,6 +6,8 @@ public class CheatCodes : MonoBehaviour
 {
     [SerializeField]
     private EggsService eggs;
+    [SerializeField]
+    private EnemiesService enemies;
 
     public BlahaijuController blahaiju;
     public Vector3 target;
@@ -45,7 +47,7 @@ public class CheatCodes : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * politicianSpawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         PoliticianBehavior walker = Instantiate(politicianPrefab);
-        walker.Initialize(eggs, spawnPosition, blahaiju);
+        walker.Initialize(eggs, spawnPosition, blahaiju, enemies);
     }
 
     void SpawnRiotShield()
@@ -53,7 +55,7 @@ public class CheatCodes : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         CRSBehavior walker = Instantiate(crsPrefab);
-        walker.Initialize(eggs, spawnPosition, blahaiju);
+        walker.Initialize(eggs, spawnPosition, blahaiju, enemies);
     }
 
     void SpawnCar()
@@ -61,7 +63,7 @@ public class CheatCodes : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         CarBehavior walker = Instantiate(carPrefab);
-        walker.Initialize(eggs, spawnPosition, blahaiju);
+        walker.Initialize(eggs, spawnPosition, blahaiju, enemies);
     }
 
     void SpawnEnemy()
@@ -69,6 +71,6 @@ public class CheatCodes : MonoBehaviour
         Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * spawnDistance;
         spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
         EnemyBehavior walker = Instantiate(enemyPrefab);
-        walker.Initialize(eggs, spawnPosition, blahaiju);
+        walker.Initialize(eggs, spawnPosition, blahaiju, enemies);
     }
 }
