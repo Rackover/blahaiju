@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceAmount: 9001
+  eggs: {fileID: 0}
   precisionOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -192,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 6349526026350741093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,8 +230,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.07
-  m_Height: 10.21
+  m_Radius: 3.02
+  m_Height: 12.59
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -4}
 --- !u!1 &9083781166971536726

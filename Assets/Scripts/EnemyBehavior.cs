@@ -116,7 +116,7 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
-        if (EggToTarget == null)
+        if (EggToTarget == null || !EggToTarget.gameObject.activeSelf)
         {
             EggToTarget = service.Any();
             SetDestination(EggToTarget.transform.position);
