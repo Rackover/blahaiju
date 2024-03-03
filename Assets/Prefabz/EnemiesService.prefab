@@ -108,6 +108,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 393b6cdce6ceebc4f9324442241bcd03, type: 2}
   - {fileID: 11400000, guid: c6ad518714fb5c349b78dcb4fe035422, type: 2}
   politicianPrefab: {fileID: 291209016707670732, guid: b1e24527136eaab4586e1f6f1b3534e9, type: 3}
-  endGameStartTime: 65
+  endGameStartTime: 40
   spawnDistance: 100
   politicianSpawnDistance: 150
