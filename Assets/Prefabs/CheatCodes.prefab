@@ -52,4 +52,4 @@ MonoBehaviour:
   crsPrefab: {fileID: 4341635862355808432, guid: 3555afc95091bef4fa7af855fd609571, type: 3}
   politicianPrefab: {fileID: 291209016707670732, guid: b1e24527136eaab4586e1f6f1b3534e9, type: 3}
   spawnDistance: 40
-  politicianSpawnDistance: 0
+  politicianSpawnDistance: 80

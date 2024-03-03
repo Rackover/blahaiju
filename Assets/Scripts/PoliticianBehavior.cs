@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PoliticianBehavior : EnemyBehavior
 {
+    [SerializeField]
+    private float blahajBumpForce = 130;
+
     public CollisionEventTransmitter collisionEventTransmitter;
 
     private void OnEnable()
@@ -35,6 +38,10 @@ public class PoliticianBehavior : EnemyBehavior
             {
                 throw new System.Exception();
             }
+        }
+        else if (other.gameObject.tag == "Player")
+        {
+            blahaiju.Bump(blahaiju.transform.position - transform.position, blahajBumpForce);
         }
     }
 }
