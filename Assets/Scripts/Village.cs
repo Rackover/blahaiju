@@ -1,5 +1,6 @@
 
 using DG.Tweening;
+using LouveSystems.LagOps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ using UnityEngine;
 public class Village : MonoBehaviour
 {
     public event System.Action OnDie;
+
+    [SerializeField]
+    private ExplosionFX explosionFX;
 
     [SerializeField]
     private GameObject[] visualElements;
@@ -79,6 +83,7 @@ public class Village : MonoBehaviour
     private void Die()
     {
         // Todo play FX
+        Instantiate(explosionFX, transform.position, Quaternion.identity);
         OnDie?.Invoke();
         Destroy(gameObject);
     }

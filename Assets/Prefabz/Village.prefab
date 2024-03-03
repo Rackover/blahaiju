@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc60d3f7274c3042b7951f74a5b9e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionFX: {fileID: 8349468274525918627, guid: 4f54b15ab38c46a46bc5a2bf6d5fd84a, type: 3}
   visualElements:
   - {fileID: 3851942074766258706, guid: e2257d8b901f69649ba4d31093735960, type: 3}
   - {fileID: 523862431230039868, guid: f9e8df1d333e01f4288a52b7d45bd549, type: 3}
