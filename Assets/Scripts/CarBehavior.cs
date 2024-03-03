@@ -8,12 +8,14 @@ public class CarBehavior : EnemyBehavior
     public float throwbackForce;
     public float villageThrowbackForce = 100;
     public float repathTriggerDistance;
+    public float steeringTriggerDistance;
     public float steeringDuration;
     private float steeringTimer;
     private bool isSteering;
     public int incorrectTries;
     public Vector2 angleRange;
     public CollisionEventTransmitter collisionEventTransmitter;
+    public List<ParticleSystem> steeringParticles;
 
     private void OnEnable()
     {
@@ -53,7 +55,7 @@ public class CarBehavior : EnemyBehavior
         Vector3 newTarget = transform.position + direction * 1.3f;
 
         agent.destination = newTarget;
-        transform.LookAt(agent.destination);
+        //transform.LookAt(agent.destination);
     }
 
     void SetCorrectDestination()
@@ -76,13 +78,16 @@ public class CarBehavior : EnemyBehavior
             if (--incorrectTries == 0)
             {
                 SetCorrectDestination();
-                LaunchSteering();
             }
             else
             {
                 SetIncorrectDestination();
                 LaunchSteering();
             }
+        }
+        else if (!isSteering && agent.remainingDistance < steeringTriggerDistance && incorrectTries>0)
+        {
+            LaunchSteering();
         }
         if (isSteering)
         {
@@ -95,6 +100,11 @@ public class CarBehavior : EnemyBehavior
     {
         isSteering = true;
         steeringTimer = 0;
+        for (int i = 0; i < steeringParticles.Count; i++)
+        {
+            steeringParticles[i].Play();
+            //steeringParticles[i].gameObject.SetActive(true);
+        }
     }
 
     void UpdateSteering()
@@ -110,6 +120,12 @@ public class CarBehavior : EnemyBehavior
     void EndSteering()
     {
         isSteering = false;
+
+        for (int i = 0; i < steeringParticles.Count; i++)
+        {
+            //steeringParticles[i].gameObject.SetActive(false);
+            steeringParticles[i].Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        }
     }
 
     void ShiftMovementType()
