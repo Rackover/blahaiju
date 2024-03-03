@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2822725747241370934}
   - component: {fileID: 5347244420747212702}
   - component: {fileID: 291209016707670732}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Politician
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderers: []
+  blinkForFrames: 8
+  blahajDeathThrowbackForce: 130
+  gibs: {fileID: 0}
   agent: {fileID: 5347244420747212702}
   lives: 50
   collisionEventTransmitter: {fileID: 2232479629483132572}
@@ -85,7 +88,7 @@ GameObject:
   - component: {fileID: 7521841297074830407}
   - component: {fileID: 3034921501667852346}
   - component: {fileID: 6021563345009122756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,9 +193,9 @@ GameObject:
   - component: {fileID: 2502970128718761210}
   - component: {fileID: 2920754990391205239}
   - component: {fileID: 2232479629483132572}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1659,14 +1659,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167167713}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -112.5, y: 0, z: 84}
+  m_LocalRotation: {x: 0, y: 0.62592345, z: 0, w: 0.7798845}
+  m_LocalPosition: {x: -142.5, y: 0, z: 84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1741354682}
   m_Father: {fileID: 286730927}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 77.5, z: 0}
 --- !u!65 &1167167715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2609,14 +2609,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018630928}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 112.5, y: 0, z: 84.00001}
+  m_LocalRotation: {x: 0, y: 0.7798845, z: 0, w: 0.62592345}
+  m_LocalPosition: {x: 142.5, y: 0, z: 84.00001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1354485748}
   m_Father: {fileID: 286730927}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 102.5, z: 0}
 --- !u!65 &2018630930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2752,6 +2752,14 @@ PrefabInstance:
       propertyPath: blahaiju
       value: 
       objectReference: {fileID: 1655430938}
+    - target: {fileID: 5150073807174666824, guid: c525c8adbe27ee546bbbc719f15ecb9e, type: 3}
+      propertyPath: politicianPrefab
+      value: 
+      objectReference: {fileID: 291209016707670732, guid: b1e24527136eaab4586e1f6f1b3534e9, type: 3}
+    - target: {fileID: 5150073807174666824, guid: c525c8adbe27ee546bbbc719f15ecb9e, type: 3}
+      propertyPath: politicianSpawnDistance
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

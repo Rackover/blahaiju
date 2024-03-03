@@ -12,7 +12,9 @@ public class CheatCodes : MonoBehaviour
     public EnemyBehavior enemyPrefab;
     public CarBehavior carPrefab;
     public CRSBehavior crsPrefab;
+    public PoliticianBehavior politicianPrefab;
     public float spawnDistance;
+    public float politicianSpawnDistance;
 
 
     void Update()
@@ -31,6 +33,19 @@ public class CheatCodes : MonoBehaviour
         {
             SpawnRiotShield();
         }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SpawnPolitician();
+        }
+    }
+
+    void SpawnPolitician()
+    {
+        Vector3 spawnPosition = UnityEngine.Random.insideUnitCircle.normalized * politicianSpawnDistance;
+        spawnPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
+        PoliticianBehavior walker = Instantiate(politicianPrefab);
+        walker.Initialize(eggs, spawnPosition, blahaiju);
     }
 
     void SpawnRiotShield()
