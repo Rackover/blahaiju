@@ -45,7 +45,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4bc64391fb319341b390d5af3761117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderers: []
   agent: {fileID: 5347244420747212702}
   lives: 50
   collisionEventTransmitter: {fileID: 2232479629483132572}

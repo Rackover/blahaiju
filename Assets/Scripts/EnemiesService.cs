@@ -17,7 +17,11 @@ public class EnemiesService : MonoBehaviour
     private float spawnTimer;
     private float gameTime;
     public List<EnemyProfile> enemyProfiles;
+    public PoliticianBehavior politicianPrefab;
+    public float endGameStartTime;
+    private bool endGameStarted;
     public float spawnDistance;
+    public float politicianSpawnDistance;
 
     void Update()
     {
@@ -35,6 +39,11 @@ public class EnemiesService : MonoBehaviour
         {
             spawnTimer -= spawnDelay;
             CheckSpawn();
+        }
+        if (gameTime > endGameStartTime && !endGameStarted)
+        {
+            endGameStarted = true;
+            SpawnEnemy(politicianPrefab);
         }
     }
 
@@ -66,7 +75,8 @@ public class EnemiesService : MonoBehaviour
         }
 
         float rand = (UnityEngine.Random.value * Time.time % 1f) * Mathf.PI * 2f;
-        Vector3 spawnPosition = new Vector3(Mathf.Sin(rand), 0f, Mathf.Cos(rand)) * spawnDistance;
+        float currentSpawnDistance = _prefab.GetType() == typeof(PoliticianBehavior) ? politicianSpawnDistance : spawnDistance;
+        Vector3 spawnPosition = new Vector3(Mathf.Sin(rand), 0f, Mathf.Cos(rand)) * currentSpawnDistance;
         EnemyBehavior walker = Instantiate(_prefab);
 
         walker.Initialize(eggs, spawnPosition, blahaiju);
