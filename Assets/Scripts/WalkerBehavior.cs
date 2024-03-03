@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class WalkerBehavior : EnemyBehavior
 {
+    public override EnemyType Type => EnemyType.Walker;
 }

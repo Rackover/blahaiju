@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum EnemyType
-{
-    Walker,
-    CRS,
-    Car,
-    Politician
-}
-
 public class EnemyBehavior : MonoBehaviour
 {
     protected EnemiesService enemiesService;
     protected Egg EggToTarget { private set; get; }
     protected Vector3 Target { private set; get; }
+
+    public virtual EnemyType Type => EnemyType.Invalid;
 
     [SerializeField]
     private Renderer[] renderers = new Renderer[0];
@@ -36,9 +30,6 @@ public class EnemyBehavior : MonoBehaviour
     protected EggsService service;
 
     private Material[] dynaMats;
-
-    protected EnemyType type;
-
 
     private bool hurtThisFrame = false;
     private int restoreAtFrame;
