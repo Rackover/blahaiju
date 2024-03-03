@@ -64,9 +64,12 @@ public class Gibs : MonoBehaviour
     IEnumerator KillFXAfterTime(ParticleSystem ps, float time)
     {
         yield return new WaitForSeconds(time);
-        ps.transform.parent = null;
-        ps.Stop(withChildren: false, ParticleSystemStopBehavior.StopEmitting);
-        Destroy(ps.gameObject, ps.main.startLifetime.constant);
+        if (ps)
+        {
+            ps.transform.parent = null;
+            ps.Stop(withChildren: false, ParticleSystemStopBehavior.StopEmitting);
+            Destroy(ps.gameObject, ps.main.startLifetime.constant);
+        }
     }
     
 }

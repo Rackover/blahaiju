@@ -8,4 +8,5 @@ public class EnemyProfile : ScriptableObject
     public EnemyBehavior prefab;
     public AnimationCurve spawnCurve;
     public float spawnCurveDuration;
+    public EnemyType enemyType;
 }

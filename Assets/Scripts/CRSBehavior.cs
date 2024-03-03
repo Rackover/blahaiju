@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CRSBehavior : EnemyBehavior
 {
+    public override EnemyType Type => EnemyType.CRS;
+
     public Rigidbody body;
     public float throwbackForce;
     public float distanceToAim;

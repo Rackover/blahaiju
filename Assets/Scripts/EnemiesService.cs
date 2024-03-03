@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class EnemiesService : MonoBehaviour
 {
+    [System.Serializable]
+    struct EnemyLimit
+    {
+        public EnemyType type;
+        public int count;
+    }
+
     [SerializeField]
     private EggsService eggs;
 
@@ -12,12 +19,15 @@ public class EnemiesService : MonoBehaviour
     [SerializeField]
     private AnimationCurve spawnSpeedOverTime = AnimationCurve.Constant(0f, 180f, 1f);
 
+    [SerializeField]
+    private EnemyLimit[] maxEnemiesPerType = new EnemyLimit[0];
+
     public BlahaijuController blahaiju;
 
     private float spawnTimer;
     private float gameTime;
     public List<EnemyProfile> enemyProfiles;
-    public List<EnemyBehavior> activeEnemies;
+
     public PoliticianBehavior politicianPrefab;
     public float endGameStartTime;
     private bool endGameStarted;
@@ -25,6 +35,28 @@ public class EnemiesService : MonoBehaviour
     public float politicianSpawnDistance;
     public bool canSpawn;
 
+    private readonly Dictionary<EnemyType, List<EnemyBehavior>> activeEnemies = new Dictionary<EnemyType, List<EnemyBehavior>>();
+
+    private void Awake()
+    {
+        for (int i = 0; i < maxEnemiesPerType.Length; i++)
+        {
+            activeEnemies[maxEnemiesPerType[i].type] = new List<EnemyBehavior>();
+        }
+    }
+
+    private int GetLimitForProfile(EnemyProfile profile)
+    {
+        for (int i = 0; i < maxEnemiesPerType.Length; i++)
+        {
+            if (maxEnemiesPerType[i].type == profile.enemyType)
+            {
+                return maxEnemiesPerType[i].count;
+            }
+        }
+
+        return 0;
+    }
 
     void Update()
     {
@@ -54,19 +86,28 @@ public class EnemiesService : MonoBehaviour
     {
         float random = 0;
         float enemySpawnChance = 0;
+        var profile = enemyProfiles[0];
+
         for (int i = 1; i < enemyProfiles.Count; i++)
         {
             random = UnityEngine.Random.Range(0.0f, 1.0f);
             enemySpawnChance = enemyProfiles[i].spawnCurve.Evaluate(gameTime / enemyProfiles[i].spawnCurveDuration);
 
-            if (random < enemySpawnChance)
+            if (random < enemySpawnChance && activeEnemies[profile.enemyType].Count < GetLimitForProfile(enemyProfiles[i]))
             {
-                SpawnEnemy(enemyProfiles[i].prefab);
+                profile = enemyProfiles[i];
+                break;
             }
-            else
-            {
-                SpawnEnemy(enemyProfiles[0].prefab);
-            }
+        }
+
+        int limit = GetLimitForProfile(profile);
+        if (activeEnemies[profile.enemyType].Count >= limit)
+        {
+            Debug.Log($"Skipping spawn for profile {profile} (hit limit of {limit})");
+        }
+        else
+        {
+            SpawnEnemy(profile.prefab);
         }
     }
 
@@ -80,16 +121,25 @@ public class EnemiesService : MonoBehaviour
         float rand = (UnityEngine.Random.value * Time.time % 1f) * Mathf.PI * 2f;
         float currentSpawnDistance = _prefab.GetType() == typeof(PoliticianBehavior) ? politicianSpawnDistance : spawnDistance;
         Vector3 spawnPosition = new Vector3(Mathf.Sin(rand), 0f, Mathf.Cos(rand)) * currentSpawnDistance;
-        EnemyBehavior walker = Instantiate(_prefab);
-        activeEnemies.Add(walker);
+        EnemyBehavior enemy = Instantiate(_prefab);
 
-        walker.Initialize(eggs, spawnPosition, blahaiju, this);
+
+        enemy.Initialize(eggs, spawnPosition, blahaiju, this);
+
+        activeEnemies[_prefab.Type].Add(enemy);
     }
 
     public void RetireEnemy(EnemyBehavior _enemy)
     {
-        activeEnemies.Remove(_enemy);
-        if (activeEnemies.Count == 0 && !canSpawn)
+        activeEnemies[_enemy.Type].Remove(_enemy);
+
+        int totalEnemies = 0;
+        foreach(var kv in activeEnemies)
+        {
+            totalEnemies += kv.Value.Count;
+        }
+
+        if (totalEnemies == 0 && !canSpawn)
         {
             eggs.Win();
         }

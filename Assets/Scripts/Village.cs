@@ -1,4 +1,5 @@
 
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,6 +49,8 @@ public class Village : MonoBehaviour
             GameObject inst = Instantiate(prefab, transform);
             inst.transform.localPosition = new Vector3(positions[i].x, 0f, positions[i].y);
             inst.transform.localEulerAngles = new Vector3(0f, Random.value * 360f, 0f);
+            inst.transform.localScale = Vector3.zero;
+            inst.transform.DOScale(1f, 1f + 0.25f * i);
             inst.name = $"visual element {i} ({positions[i]})";
             managedObjects.Add(inst);
         }

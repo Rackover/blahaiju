@@ -102,12 +102,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  maxEnemiesPerType:
+  - type: 1
+    count: 3
+  - type: 4
+    count: 5
+  - type: 2
+    count: 1
+  - type: 3
+    count: 30
   blahaiju: {fileID: 0}
   enemyProfiles:
   - {fileID: 11400000, guid: 0a1d82bee77316c459dd51e932bda0f9, type: 2}
-  - {fileID: 11400000, guid: 393b6cdce6ceebc4f9324442241bcd03, type: 2}
   - {fileID: 11400000, guid: c6ad518714fb5c349b78dcb4fe035422, type: 2}
+  - {fileID: 11400000, guid: 393b6cdce6ceebc4f9324442241bcd03, type: 2}
   politicianPrefab: {fileID: 291209016707670732, guid: b1e24527136eaab4586e1f6f1b3534e9, type: 3}
   endGameStartTime: 40
   spawnDistance: 100
   politicianSpawnDistance: 150
+  canSpawn: 1

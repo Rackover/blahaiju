@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CarBehavior : EnemyBehavior
 {
+    public override EnemyType Type => EnemyType.Car;
+
     public Rigidbody body;
     public float throwbackForce;
     public float villageThrowbackForce = 100;

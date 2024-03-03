@@ -9,6 +9,8 @@ public class EnemyBehavior : MonoBehaviour
     protected Egg EggToTarget { private set; get; }
     protected Vector3 Target { private set; get; }
 
+    public virtual EnemyType Type => EnemyType.Invalid;
+
     [SerializeField]
     private Renderer[] renderers = new Renderer[0];
 
@@ -28,7 +30,6 @@ public class EnemyBehavior : MonoBehaviour
     protected EggsService service;
 
     private Material[] dynaMats;
-
 
     private bool hurtThisFrame = false;
     private int restoreAtFrame;

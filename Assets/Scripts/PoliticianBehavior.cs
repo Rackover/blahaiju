@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PoliticianBehavior : EnemyBehavior
 {
+    public override EnemyType Type => EnemyType.Politician;
+
     [SerializeField]
     private float blahajBumpForce = 130;
 
