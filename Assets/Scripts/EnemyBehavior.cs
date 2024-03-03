@@ -17,6 +17,9 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     private float blahajDeathThrowbackForce = 130;
 
+    [SerializeField]
+    private Gibs gibs;
+
     protected BlahaijuController blahaiju;
     public NavMeshAgent agent;
     public int lives;
@@ -66,7 +69,16 @@ public class EnemyBehavior : MonoBehaviour
 
     public void Die()
     {
+        AboutToDie();
         Destroy(gameObject);
+    }
+
+    protected virtual void AboutToDie()
+    {
+        if (gibs)
+        {
+            gibs.Discobombulate();
+        }
     }
 
     private void OnDestroy()
