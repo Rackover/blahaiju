@@ -6,6 +6,9 @@ using UnityEngine;
 public class EnemyProfile : ScriptableObject
 {
     public EnemyBehavior prefab;
+
+    public EnemyBehavior[] prefabsVariety;
+
     public AnimationCurve spawnCurve;
     public float spawnCurveDuration;
     public EnemyType enemyType;
