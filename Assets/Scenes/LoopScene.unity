@@ -904,6 +904,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334513995}
   m_CullTransparentMesh: 1
+--- !u!114 &533536525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7132276046468378665, guid: 033876137bdde044884c77da2ff87241, type: 3}
+  m_PrefabInstance: {fileID: 6940749643570259755}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36909d1da9b5f5041924d2f79335d6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &581351470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,6 +2760,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1805127162}
     - target: {fileID: 5150073807174666824, guid: c525c8adbe27ee546bbbc719f15ecb9e, type: 3}
+      propertyPath: enemies
+      value: 
+      objectReference: {fileID: 533536525}
+    - target: {fileID: 5150073807174666824, guid: c525c8adbe27ee546bbbc719f15ecb9e, type: 3}
       propertyPath: blahaiju
       value: 
       objectReference: {fileID: 1655430938}
@@ -2821,6 +2836,10 @@ PrefabInstance:
       propertyPath: blahaiju
       value: 
       objectReference: {fileID: 1655430938}
+    - target: {fileID: 7132276046468378665, guid: 033876137bdde044884c77da2ff87241, type: 3}
+      propertyPath: canSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8738222754685534448, guid: 033876137bdde044884c77da2ff87241, type: 3}
       propertyPath: m_Name
       value: EnemiesService
@@ -2886,6 +2905,10 @@ PrefabInstance:
       propertyPath: endPanel
       value: 
       objectReference: {fileID: 1039080574}
+    - target: {fileID: 8673089417480783514, guid: 1b4d2d9f782070b45a92c1b578729620, type: 3}
+      propertyPath: enemiesService
+      value: 
+      objectReference: {fileID: 533536525}
     - target: {fileID: 8673089417480783514, guid: 1b4d2d9f782070b45a92c1b578729620, type: 3}
       propertyPath: maxDevelopment
       value: 45
