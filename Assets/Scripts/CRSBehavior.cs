@@ -39,6 +39,20 @@ public class CRSBehavior : EnemyBehavior
         {
             agent.speed = runSpeed;
         }
+
+        ShiftMovementType();
+    }
+    void ShiftMovementType()
+    {
+        if (body.velocity.magnitude > 0 && !agent.isStopped)
+        {
+            agent.isStopped = true;
+        }
+        else if (body.velocity.magnitude < 1.0f && agent.isStopped)
+        {
+            body.velocity = Vector3.zero;
+            agent.isStopped = false;
+        }
     }
 
     public override void Hurt(bool fromBlahaj, bool disableCRSCheck)
