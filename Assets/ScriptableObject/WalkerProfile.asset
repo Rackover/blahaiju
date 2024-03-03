@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: WalkerProfile
   m_EditorClassIdentifier: 
   prefab: {fileID: 3279995099623428662, guid: d95aa879008418a4395da9750c55a75d, type: 3}
+  prefabsVariety:
+  - {fileID: 3279995099623428662, guid: 26da30094061d4e4f818e9e42f2b6310, type: 3}
+  - {fileID: 3279995099623428662, guid: c6ca89bc6c7078a4abcf7eb839c2733a, type: 3}
+  - {fileID: 3279995099623428662, guid: 39dbdac892ab17f46b76ac5e46bf779b, type: 3}
+  - {fileID: 3279995099623428662, guid: f3d599ddfe014364994d952fe35a5d8d, type: 3}
   spawnCurve:
     serializedVersion: 2
     m_Curve:
