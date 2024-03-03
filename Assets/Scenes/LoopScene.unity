@@ -2211,6 +2211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blahaiju
       objectReference: {fileID: 0}
+    - target: {fileID: 4638118738974894851, guid: b9d806f4cfd6331449f992586432df9c, type: 3}
+      propertyPath: eggs
+      value: 
+      objectReference: {fileID: 1805127162}
     - target: {fileID: 8843664020503345580, guid: b9d806f4cfd6331449f992586432df9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

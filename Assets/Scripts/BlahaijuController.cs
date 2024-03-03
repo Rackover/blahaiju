@@ -12,6 +12,9 @@ public class BlahaijuController : MonoBehaviour
     public float forceAmount = 2000f;
 
     [SerializeField]
+    private EggsService eggs;
+
+    [SerializeField]
     private AnimationCurve precisionOverDistance = AnimationCurve.Constant(0f, 1f, 1F);
 
     [SerializeField]
@@ -62,6 +65,11 @@ public class BlahaijuController : MonoBehaviour
 
     private void Update()
     {
+        if (eggs.GameFinished)
+        {
+            return;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, LayerMask.GetMask("Default")))
         {
