@@ -1,3 +1,4 @@
+using LouveSystems.LagOps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,15 @@ public class CarBehavior : EnemyBehavior
     public Vector2 angleRange;
     public CollisionEventTransmitter collisionEventTransmitter;
     public List<ParticleSystem> steeringParticles;
+
+    [SerializeField]
+    private ExplosionFX carExplosion;
+
+    [SerializeField]
+    private ParticleSystem weeWoo;
+
+    [SerializeField]
+    private float weeWooSpeed = 6f;
 
     private void OnEnable()
     {
@@ -73,6 +83,11 @@ public class CarBehavior : EnemyBehavior
         if (service.GameFinished)
         {
             return;
+        }
+
+        {
+            var a = weeWoo.main;
+            a.startColor = Color.Lerp(Color.red, Color.blue, (Mathf.Sin(Time.time * weeWooSpeed) + 1f) / 2f);
         }
 
         if (agent.remainingDistance < repathTriggerDistance)
@@ -141,6 +156,12 @@ public class CarBehavior : EnemyBehavior
             body.velocity = Vector3.zero;
             agent.isStopped = false;
         }
+    }
+
+    protected override void AboutToDie()
+    {
+        base.AboutToDie();
+        Instantiate(carExplosion, transform.position, Quaternion.identity);
     }
 
     public override void Hurt(bool fromBlahaj, bool disableCRSCheck)

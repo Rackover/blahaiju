@@ -46,6 +46,7 @@ public class BlahaijuController : MonoBehaviour
     public void Bump(Vector3 towards, float force)
     {
         body.AddForce(towards.normalized * force, ForceMode.Impulse);
+        Camera.main.GetComponent<Hook>()?.ShakeCamera(2, 0.15f);
     }
 
 

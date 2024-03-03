@@ -136,6 +136,7 @@ public class EggsService : MonoBehaviour
         {
             enemiesService.PreventSpawn(true);
         }
+
         if (activeEggs.Remove(egg))
         {
             availableEggSpots.Enqueue(egg.transform.position);
@@ -145,6 +146,8 @@ public class EggsService : MonoBehaviour
             development = (development / spawnEggEveryXDevelopment - 1) * spawnEggEveryXDevelopment;
 
             development = Mathf.Max(0, development);
+
+            Camera.main.GetComponent<Hook>()?.ShakeCamera(10, 1f);
 
             if (activeEggs.Count == 0)
             {

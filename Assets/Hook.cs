@@ -14,11 +14,19 @@ public class Hook : MonoBehaviour
     [ContextMenu("Shake!")]
     public void ShakeCamera()
     {
+        ShakeCamera(duration, strength);
+    }
+
+    public void ShakeCamera(float strength, float duration)
+    {
         Vector3 originalPosition = transform.position;
         transform.DOShakePosition(duration, strength)
             .OnComplete(() =>
             {
-                transform.position = originalPosition;
+                if (this)
+                {
+                    transform.position = originalPosition;
+                }
             });
     }
 }
