@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EggsService : MonoBehaviour
 {
+    public EndPanel endPanel;
     public int Development => development;
 
     public bool GameFinished { private set; get; } = false;
@@ -95,6 +96,9 @@ public class EggsService : MonoBehaviour
         if (development>=maxDevelopment)
         {
             //Win
+            GameFinished = true;
+            endPanel.gameObject.SetActive(true );
+            endPanel.Initialize(true);
         }
         else
         {
@@ -132,6 +136,8 @@ public class EggsService : MonoBehaviour
                 Debug.LogError($"Game over!");
 
                 GameFinished = true;
+                endPanel.gameObject.SetActive(true);
+                endPanel.Initialize(false);
             }
         }
     }
