@@ -21,15 +21,19 @@ public class EndPanel : MonoBehaviour
             winTitle.SetActive(false);
             loseTitle.SetActive(true);
         }
+        Time.timeScale = 0;
     }
 
     public void RestartLevel()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
+
     }
 
     public void BackToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(menuSceneName);
     }
 }
