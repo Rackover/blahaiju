@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    protected EnemiesService enemiesService;
     protected Egg EggToTarget { private set; get; }
     protected Vector3 Target { private set; get; }
 
@@ -32,10 +33,11 @@ public class EnemyBehavior : MonoBehaviour
     private bool hurtThisFrame = false;
     private int restoreAtFrame;
 
-    public virtual void Initialize(EggsService service, Vector3 spawnPosition, BlahaijuController _blahaiju)
+    public virtual void Initialize(EggsService service, Vector3 spawnPosition, BlahaijuController _blahaiju, EnemiesService _enemiesService)
     {
         transform.position = spawnPosition;
 
+        enemiesService = _enemiesService;
         this.service = service;
         EggToTarget = service.Any();
         SetDestination(EggToTarget.transform.position);
@@ -70,6 +72,7 @@ public class EnemyBehavior : MonoBehaviour
     public void Die()
     {
         AboutToDie();
+        enemiesService.RetireEnemy(this);
         Destroy(gameObject);
     }
 
