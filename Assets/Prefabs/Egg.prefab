@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggsService: {fileID: 0}
+  visualTransform: {fileID: 5285023718022418828}
 --- !u!136 &8205109992545382353
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -78,6 +78,12 @@ public class EggsService : MonoBehaviour
 
     void SpawnEgg()
     {
+        if (availableEggSpots.Count == 0)
+        {
+            Debug.LogError($"NO AVAILABLE EGG SPOTS !! CANNOT SPAWN EGG! !!");
+            return;
+        }
+
         var egg = Pooler.DePool(this, eggPrefab);
 
         egg.transform.parent = transform;

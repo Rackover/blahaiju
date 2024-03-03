@@ -132,7 +132,14 @@ public class EnemiesService : MonoBehaviour
     public void RetireEnemy(EnemyBehavior _enemy)
     {
         activeEnemies[_enemy.Type].Remove(_enemy);
-        if (activeEnemies.Count == 0 && !canSpawn)
+
+        int totalEnemies = 0;
+        foreach(var kv in activeEnemies)
+        {
+            totalEnemies += kv.Value.Count;
+        }
+
+        if (totalEnemies == 0 && !canSpawn)
         {
             eggs.Win();
         }
