@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyType
+{
+    Walker,
+    CRS,
+    Car,
+    Politician
+}
+
 public class EnemyBehavior : MonoBehaviour
 {
     protected EnemiesService enemiesService;
@@ -28,6 +36,8 @@ public class EnemyBehavior : MonoBehaviour
     protected EggsService service;
 
     private Material[] dynaMats;
+
+    protected EnemyType type;
 
 
     private bool hurtThisFrame = false;
