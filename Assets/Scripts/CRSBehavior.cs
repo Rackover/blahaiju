@@ -7,6 +7,9 @@ public class CRSBehavior : EnemyBehavior
     public Rigidbody body;
     public float throwbackForce;
     public float distanceToAim;
+    public float runSpeed;
+    public float slowSpeed;
+    public float distanceToSlowDown;
 
     protected override void Update()
     {
@@ -24,6 +27,17 @@ public class CRSBehavior : EnemyBehavior
         else if (agent.destination != Target)
         {
             agent.destination = Target;
+        }
+        if (agent.remainingDistance < distanceToSlowDown)
+        {
+            if (agent.speed != slowSpeed)
+            {
+                agent.speed = slowSpeed;
+            }
+        }
+        else if (agent.speed != runSpeed)
+        {
+            agent.speed = runSpeed;
         }
     }
 

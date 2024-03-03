@@ -635,6 +635,9 @@ MonoBehaviour:
   body: {fileID: 3725587068388072716}
   throwbackForce: 20
   distanceToAim: 15
+  runSpeed: 9
+  slowSpeed: 3.5
+  distanceToSlowDown: 70
 --- !u!195 &1799373362502347251
 NavMeshAgent:
   m_ObjectHideFlags: 0
