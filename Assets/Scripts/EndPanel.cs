@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class EndPanel : MonoBehaviour
 {
     public string sceneName;
+    public string menuSceneName;
     public GameObject winTitle;
     public GameObject loseTitle;
     public void Initialize(bool _won)
@@ -25,5 +26,10 @@ public class EndPanel : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(menuSceneName);
     }
 }
