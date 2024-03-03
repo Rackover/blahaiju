@@ -8,6 +8,9 @@ public class CarBehavior : EnemyBehavior
     public float throwbackForce;
     public float villageThrowbackForce = 100;
     public float repathTriggerDistance;
+    public float steeringDuration;
+    private float steeringTimer;
+    private bool isSteering;
     public int incorrectTries;
     public Vector2 angleRange;
     public CollisionEventTransmitter collisionEventTransmitter;
@@ -70,16 +73,43 @@ public class CarBehavior : EnemyBehavior
 
         if (agent.remainingDistance < repathTriggerDistance)
         {
-            if (--incorrectTries <= 0)
+            if (--incorrectTries == 0)
             {
                 SetCorrectDestination();
+                LaunchSteering();
             }
             else
             {
                 SetIncorrectDestination();
+                LaunchSteering();
             }
         }
+        if (isSteering)
+        {
+            UpdateSteering();
+        }
         ShiftMovementType();
+    }
+
+    void LaunchSteering()
+    {
+        isSteering = true;
+        steeringTimer = 0;
+    }
+
+    void UpdateSteering()
+    {
+        steeringTimer += Time.deltaTime;
+        //Do steering
+        if (steeringTimer>steeringDuration)
+        {
+            EndSteering();
+        }
+    }
+
+    void EndSteering()
+    {
+        isSteering = false;
     }
 
     void ShiftMovementType()
