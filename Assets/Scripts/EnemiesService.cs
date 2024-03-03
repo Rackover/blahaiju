@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemiesService : MonoBehaviour
@@ -107,7 +108,16 @@ public class EnemiesService : MonoBehaviour
         }
         else
         {
-            SpawnEnemy(profile.prefab);
+            if (profile.prefabsVariety.Length > 0)
+            {
+                var filtered = profile.prefabsVariety.Where(o => o).ToArray();
+                var pref = filtered[Random.Range(0, filtered.Length - 1)];
+                SpawnEnemy(pref);
+            }
+            else
+            {
+                SpawnEnemy(profile.prefab);
+            }
         }
     }
 
