@@ -23,11 +23,15 @@ public class BlahaijuController : MonoBehaviour
     [SerializeField]
     private CollisionEventTransmitter collisionEventTransmitter;
 
+    [SerializeField]
+    [Range(0f, 20f)]
+    private float visualTiltOnForce = 40f;
+
     //[SerializeField]
     //private AnimationCurve visualCatchUpMultiplierWithDistance = AnimationCurve.Linear(0f, 0.2f, 10f, 1F);
 
-    //[SerializeField]
-    //private Transform visualBody;
+    [SerializeField]
+    private Transform visualBody;
 
     //[SerializeField]
     //[Range(0f, 1000f)]
@@ -74,9 +78,14 @@ public class BlahaijuController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, LayerMask.GetMask("Default")))
         {
             destination = hit.point;
-            float mag = Vector3.Magnitude(destination - transform.position);
+            Vector3 direction = destination - transform.position;
+            float mag = Vector3.Magnitude(direction);
             precisionMultiplier = precisionOverDistance.Evaluate(mag);
             forceMultiplier = forceMultiplierOverDistance.Evaluate(mag);
+
+            float angle = Vector3.Angle(transform.forward, direction.normalized);
+            float tilt = visualTiltOnForce * angle;
+            visualBody.localEulerAngles = new Vector3(0f, 0f, tilt);
         }
     }
 

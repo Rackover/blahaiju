@@ -117,6 +117,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   collisionEventTransmitter: {fileID: 5906172562835774582}
+  visualTiltOnForce: 40
+  visualBody: {fileID: 6678618788839861562}
   body: {fileID: 8460145111928136442}
 --- !u!135 &8375366913703402663
 SphereCollider:
