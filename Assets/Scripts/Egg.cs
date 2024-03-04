@@ -25,13 +25,18 @@ public class Egg : MonoBehaviour
         GameObject other = _collision.gameObject;
         if (_collision.gameObject.CompareTag("Enemy"))
         {
-            if (other.transform.parent != null && other.transform.parent.GetComponent<EnemyBehavior>() != null)
+            var enemy = other.gameObject.GetComponentInParent<EnemyBehavior>();
+
+            if (enemy)
             {
-                Destroy(other.transform.parent.gameObject);
-            }
-            else
-            {
-                Destroy(other);
+                if (enemy.GetType() != typeof(PoliticianBehavior))
+                {
+                    enemy.Die();
+                }
+                else
+                {
+                    eggsService.Lose();
+                }
             }
             
             GetHurt();
