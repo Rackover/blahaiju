@@ -28,6 +28,9 @@ namespace LouveSystems.LagOps
         [SerializeField]
         private float duration = 1f;
 
+        [SerializeField]
+        AudioClip sound;
+
         private Material matInstance;
         private Color discColor;
         private Sequence currentSequence;
@@ -64,6 +67,7 @@ namespace LouveSystems.LagOps
             }
 
             Initialize();
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(sound);
 
             transform.up = Vector3.up;
 

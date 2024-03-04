@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesService: {fileID: 0}
   endPanel: {fileID: 0}
+  eggLossClip: {fileID: 8300000, guid: 439f071d42d2e934f8f821c86e80c0f8, type: 3}
   spawnEggEveryXDevelopment: 5
   spawnVillageEveryXDevelopment: 1
   startEggs: 2

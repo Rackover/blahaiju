@@ -18,6 +18,9 @@ public class EnemiesService : MonoBehaviour
     private float spawnDelayMultiplier = 1f;
 
     [SerializeField]
+    private AudioClip smallBoom;
+
+    [SerializeField]
     [Range(0f, 1f)]
     private float randomSignChance = 0.2f;
 
@@ -151,6 +154,8 @@ public class EnemiesService : MonoBehaviour
     public void RetireEnemy(EnemyBehavior _enemy)
     {
         activeEnemies[_enemy.Type].Remove(_enemy);
+
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(smallBoom);
 
         int totalEnemies = 0;
         foreach(var kv in activeEnemies)

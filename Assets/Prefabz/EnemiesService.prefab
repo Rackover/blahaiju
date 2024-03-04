@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggs: {fileID: 0}
   spawnDelayMultiplier: 0.85
+  smallBoom: {fileID: 8300000, guid: badb625f337253648889ad0e95f39fd8, type: 3}
+  randomSignChance: 0.2
   spawnSpeedOverTime:
     serializedVersion: 2
     m_Curve:
