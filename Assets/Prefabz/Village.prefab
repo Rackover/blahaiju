@@ -47,11 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 8349468274525918627, guid: 4f54b15ab38c46a46bc5a2bf6d5fd84a, type: 3}
   visualElements:
-  - {fileID: 3851942074766258706, guid: e2257d8b901f69649ba4d31093735960, type: 3}
+  - {fileID: 1476586561205863409, guid: 7996b6df76f267d47b97dbe0d960e290, type: 3}
   - {fileID: 523862431230039868, guid: f9e8df1d333e01f4288a52b7d45bd549, type: 3}
+  - {fileID: 6463780297847462027, guid: b3c974d1c0405cb48b3e9074379be6ce, type: 3}
+  - {fileID: 4861414794317223447, guid: 57bc1a57627dfe04fa5c76642d182792, type: 3}
   size: 3
-  maxRange: 10
-  minRange: 1
+  maxRange: 12
+  minRange: 8
   villageCollider: {fileID: 5494745485408457107}
 --- !u!1 &6598030621183160246
 GameObject:
