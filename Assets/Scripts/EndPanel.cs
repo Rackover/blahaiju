@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndPanel : MonoBehaviour
 {
     public string sceneName;
     public string menuSceneName;
+    public TextMeshProUGUI scoreText;
     public GameObject winTitle;
     public GameObject loseTitle;
     public void Initialize(bool _won)
@@ -21,6 +23,7 @@ public class EndPanel : MonoBehaviour
             winTitle.SetActive(false);
             loseTitle.SetActive(true);
         }
+        scoreText.text = $"Score: {Score.Instance.score}";
         Time.timeScale = 0;
     }
 

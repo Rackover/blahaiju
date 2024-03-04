@@ -37,7 +37,7 @@ public class Score : MonoBehaviour
 
     private float displayedScore = 0F;
 
-    private int score = 0;
+    public int score = 0;
 
     private void Awake()
     {
