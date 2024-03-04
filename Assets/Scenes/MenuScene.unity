@@ -627,7 +627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176, y: -240.08}
+  m_AnchoredPosition: {x: 176, y: -213.55}
   m_SizeDelta: {x: 352, y: 225.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721960149
@@ -653,6 +653,8 @@ MonoBehaviour:
   m_text: 'Aedianys
 
     Alessia
+
+    Armistice
 
     Louve Hurlante'
   m_isRightToLeft: 0
@@ -932,7 +934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63.1, y: -334.47}
+  m_AnchoredPosition: {x: 63.1, y: -326}
   m_SizeDelta: {x: 126.2, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &916428737
@@ -1316,10 +1318,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 53
+    m_Top: 18
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: -33.16
+  m_Spacing: -15.1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
