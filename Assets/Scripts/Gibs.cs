@@ -36,7 +36,7 @@ public class Gibs : MonoBehaviour
         {
             var gib = gibs[i];
 
-            if (gib)
+            if (!gib)
             {
                 continue;
             }
