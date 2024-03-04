@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3279995099623428662, guid: d95aa879008418a4395da9750c55a75d, type: 3}
   prefabsVariety:
-  - {fileID: 3279995099623428662, guid: 26da30094061d4e4f818e9e42f2b6310, type: 3}
-  - {fileID: 3279995099623428662, guid: c6ca89bc6c7078a4abcf7eb839c2733a, type: 3}
-  - {fileID: 3279995099623428662, guid: 39dbdac892ab17f46b76ac5e46bf779b, type: 3}
-  - {fileID: 3279995099623428662, guid: f3d599ddfe014364994d952fe35a5d8d, type: 3}
+  - {fileID: 7904476376367863070, guid: ed1a9a1b6ff835448ab82f4de6a492dc, type: 3}
+  - {fileID: 7020370677969734502, guid: 54a8175ca6e500246b052193d5caa6f9, type: 3}
+  - {fileID: 8927833535105543232, guid: 2b85909b1df78d04598051aebe112fd7, type: 3}
+  - {fileID: 4496447823658328486, guid: 7d7a0f2373f304a4697f5a86cea30032, type: 3}
   spawnCurve:
     serializedVersion: 2
     m_Curve:

@@ -73,9 +73,11 @@ MonoBehaviour:
   - {fileID: 3034921501667852346}
   blinkForFrames: 8
   blahajDeathThrowbackForce: 130
+  scoreValue: 1000
   gibs: {fileID: 0}
   agent: {fileID: 5347244420747212702}
   lives: 50
+  blahajBumpForce: 130
   collisionEventTransmitter: {fileID: 2232479629483132572}
 --- !u!1 &3442271592232934119
 GameObject:

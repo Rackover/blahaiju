@@ -21,6 +21,9 @@ public class EnemyBehavior : MonoBehaviour
     private float blahajDeathThrowbackForce = 130;
 
     [SerializeField]
+    private int scoreValue = 100;
+
+    [SerializeField]
     private Gibs gibs;
 
     protected BlahaijuController blahaiju;
@@ -73,6 +76,11 @@ public class EnemyBehavior : MonoBehaviour
     public void Die()
     {
         AboutToDie();
+        if (Score.Instance)
+        {
+            Score.Instance.IncreaseScore(transform.position, scoreValue);
+        }
+
         enemiesService.RetireEnemy(this);
         Destroy(gameObject);
     }

@@ -736,6 +736,7 @@ MonoBehaviour:
   renderers: []
   blinkForFrames: 8
   blahajDeathThrowbackForce: 0
+  scoreValue: 50
   gibs: {fileID: 4490056396582547355}
   agent: {fileID: 1799373362502347251}
   lives: 1

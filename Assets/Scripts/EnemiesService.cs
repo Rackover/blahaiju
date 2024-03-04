@@ -18,6 +18,10 @@ public class EnemiesService : MonoBehaviour
     private float spawnDelayMultiplier = 1f;
 
     [SerializeField]
+    [Range(0f, 1f)]
+    private float randomSignChance = 0.2f;
+
+    [SerializeField]
     private AnimationCurve spawnSpeedOverTime = AnimationCurve.Constant(0f, 180f, 1f);
 
     [SerializeField]
@@ -94,7 +98,7 @@ public class EnemiesService : MonoBehaviour
             random = UnityEngine.Random.Range(0.0f, 1.0f);
             enemySpawnChance = enemyProfiles[i].spawnCurve.Evaluate(gameTime / enemyProfiles[i].spawnCurveDuration);
 
-            if (random < enemySpawnChance && activeEnemies[profile.enemyType].Count < GetLimitForProfile(enemyProfiles[i]))
+            if (random < enemySpawnChance && activeEnemies[enemyProfiles[i].enemyType].Count < GetLimitForProfile(enemyProfiles[i]))
             {
                 profile = enemyProfiles[i];
                 break;
@@ -135,6 +139,11 @@ public class EnemiesService : MonoBehaviour
 
 
         enemy.Initialize(eggs, spawnPosition, blahaiju, this);
+
+        if (enemy is WalkerBehavior walker && Random.value < randomSignChance)
+        {
+            walker.GiveSign();
+        }
 
         activeEnemies[_prefab.Type].Add(enemy);
     }

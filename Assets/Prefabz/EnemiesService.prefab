@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggs: {fileID: 0}
-  spawnDelayMultiplier: 1
+  spawnDelayMultiplier: 0.85
   spawnSpeedOverTime:
     serializedVersion: 2
     m_Curve:
@@ -92,7 +92,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 180
-      value: -1.6717834
+      value: 0.046875
       inSlope: 0
       outSlope: 0
       tangentMode: 0

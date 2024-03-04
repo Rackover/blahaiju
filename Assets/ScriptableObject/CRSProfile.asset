@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CRSProfile
   m_EditorClassIdentifier: 
   prefab: {fileID: 4341635862355808432, guid: 3555afc95091bef4fa7af855fd609571, type: 3}
+  prefabsVariety: []
   spawnCurve:
     serializedVersion: 2
     m_Curve:
@@ -36,7 +37,7 @@ MonoBehaviour:
       outWeight: 0.38888884
     - serializedVersion: 3
       time: 1
-      value: 0.3
+      value: 0.80021363
       inSlope: 0
       outSlope: 0
       tangentMode: 0
