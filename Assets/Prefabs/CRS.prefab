@@ -741,7 +741,7 @@ MonoBehaviour:
   agent: {fileID: 1799373362502347251}
   lives: 1
   body: {fileID: 3725587068388072716}
-  throwbackForce: 20
+  throwbackForce: 7.5
   distanceToAim: 15
   runSpeed: 9
   slowSpeed: 3.5

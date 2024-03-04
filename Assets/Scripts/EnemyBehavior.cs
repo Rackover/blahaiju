@@ -69,14 +69,14 @@ public class EnemyBehavior : MonoBehaviour
 
         if (--lives<=0)
         {
-            Die();
+            Die(fromBlahaj);
         }
     }
 
-    public void Die()
+    public void Die(bool fromBlahaj)
     {
         AboutToDie();
-        if (Score.Instance)
+        if (Score.Instance && fromBlahaj)
         {
             Score.Instance.IncreaseScore(transform.position, scoreValue);
         }

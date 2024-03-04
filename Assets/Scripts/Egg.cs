@@ -31,7 +31,7 @@ public class Egg : MonoBehaviour
             {
                 if (enemy.GetType() != typeof(PoliticianBehavior))
                 {
-                    enemy.Die();
+                    enemy.Die(false);
                 }
                 else
                 {
