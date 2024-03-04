@@ -155,6 +155,8 @@ MonoBehaviour:
   - {fileID: 4685998562713463691}
   animator: {fileID: 2397546150699811770}
   bloodFX: {fileID: 3045370247138961755, guid: c47c23bbfa93ec746b58b00338eb2af0, type: 3}
+  explodeForce: 150
+  explodeSpread: 15
   chanceToKeepGib: 0.8
   chanceToBleed: 0.5
 --- !u!195 &4002251737517297359

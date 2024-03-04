@@ -50,7 +50,7 @@ public class CRSBehavior : EnemyBehavior
         {
             agent.isStopped = true;
         }
-        else if (body.velocity.magnitude < 1.0f && agent.isStopped)
+        else if (body.velocity.magnitude < 3.0f && agent.isStopped)
         {
             body.velocity = Vector3.zero;
             agent.isStopped = false;

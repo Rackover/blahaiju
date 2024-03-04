@@ -58,6 +58,11 @@ public class Village : MonoBehaviour
             inst.name = $"visual element {i} ({positions[i]})";
             managedObjects.Add(inst);
         }
+        CollisionEventTransmitter[] housesColliders = GetComponentsInChildren<CollisionEventTransmitter>();
+        foreach (CollisionEventTransmitter transmitter in housesColliders)
+        {
+            transmitter.onColliderEnter += VillageCollider_onColliderEnter;
+        }
 
         villageCollider.onColliderEnter += VillageCollider_onColliderEnter;
     }
@@ -77,6 +82,13 @@ public class Village : MonoBehaviour
                 car.body.AddForce(direction.normalized * car.villageThrowbackForce, ForceMode.Impulse);
                 return;
             }
+            var politician = obj.gameObject.GetComponentInParent<PoliticianBehavior>();
+            if (politician)
+            {
+                Die();
+                return;
+            }
+            
         }
     }
 

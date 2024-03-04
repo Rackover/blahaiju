@@ -14,6 +14,12 @@ public class Gibs : MonoBehaviour
     private GameObject bloodFX;
 
     [SerializeField]
+    private float explodeForce;
+
+    [SerializeField]
+    private float explodeSpread;
+
+    [SerializeField]
     [Range(0f, 1f)]
     private float chanceToKeepGib = 0.8f;
 
@@ -30,6 +36,7 @@ public class Gibs : MonoBehaviour
         {
             var gib = gibs[i];
 
+            Transform cam = Camera.main.transform;
             if (Random.value <= chanceToKeepGib)
             {
                 var sphere = gib.gameObject.AddComponent<SphereCollider>();
@@ -43,6 +50,9 @@ public class Gibs : MonoBehaviour
 
                 var body = gib.gameObject.AddComponent<Rigidbody>();
                 body.mass = 1f;
+                Vector3 spread = Random.insideUnitSphere * explodeSpread;
+                Vector3 explodeDirection = (cam.position - body.position + spread).normalized;
+                body.AddForce(explodeDirection * explodeForce, ForceMode.Impulse);
 
                 float gibTime = 2f;
 
