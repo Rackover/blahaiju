@@ -152,14 +152,19 @@ public class EggsService : MonoBehaviour
             if (activeEggs.Count == 0)
             {
                 // Lost!
-                Debug.LogError($"Game over!");
-
-                GameFinished = true;
-                endPanel.gameObject.SetActive(true);
-                endPanel.Initialize(false);
+                Lose();
             }
         }
     }
+    public void Lose()
+    {
+        Debug.LogError($"Game over!");
+
+        GameFinished = true;
+        endPanel.gameObject.SetActive(true);
+        endPanel.Initialize(false);
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
