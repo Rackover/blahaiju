@@ -347,11 +347,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6bf05fa91e68c43aa7185ac9c74e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesService: {fileID: 0}
+  endPanel: {fileID: 0}
   spawnEggEveryXDevelopment: 5
   spawnVillageEveryXDevelopment: 1
   startEggs: 2
   developEveryXSeconds: 3
-  maxDevelopment: 9
+  maxDevelopment: 45
   eggPrefab: {fileID: 7335824302685880216, guid: 6a7750006ceb811439b67f04774d64c9, type: 3}
   eggSpots:
   - {fileID: 1637330569638164818}
