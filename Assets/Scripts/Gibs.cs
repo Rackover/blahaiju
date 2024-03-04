@@ -36,6 +36,11 @@ public class Gibs : MonoBehaviour
         {
             var gib = gibs[i];
 
+            if (gib)
+            {
+                continue;
+            }
+
             Transform cam = Camera.main.transform;
             if (Random.value <= chanceToKeepGib)
             {
