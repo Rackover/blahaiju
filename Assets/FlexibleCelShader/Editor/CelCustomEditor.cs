@@ -16,12 +16,22 @@ public class CelCustomEditor : MaterialEditor
     void showProperty(string propertyName)
     {
         MaterialProperty property = GetMaterialProperty(targets, propertyName);
+        if (property == null)
+        {
+            return;
+        }
+
         ShaderProperty(property, property.displayName);
     }
 
     void showPropertyAsInt(string propertyName)
     {
         MaterialProperty property = GetMaterialProperty(targets, propertyName);
+        if (property == null)
+        {
+
+        }
+
         ShaderProperty(property, property.displayName);
         property.floatValue = Mathf.Round(property.floatValue);
     }
@@ -29,6 +39,12 @@ public class CelCustomEditor : MaterialEditor
     void showPropertyGreaterZero(string propertyName)
     {
         MaterialProperty property = GetMaterialProperty(targets, propertyName);
+        
+        if (property == null)
+        {
+            return;
+        }
+
         ShaderProperty(property, property.displayName);
         if (property.floatValue < 0)
         {
@@ -87,8 +103,8 @@ public class CelCustomEditor : MaterialEditor
         GUILayout.Space(spacing);
         EditorGUILayout.LabelField("Base Color and Textures", EditorStyles.boldLabel);
         showProperty("_MainTex");
-        showProperty("_NormalTex");
-        showProperty("_EmmisTex");
+        //showProperty("_NormalTex");
+        //showProperty("_EmmisTex");
         showProperty("_Color");
         showProperty("_ColorOverride");
 
@@ -107,24 +123,24 @@ public class CelCustomEditor : MaterialEditor
         showProperty("_LowColor");
         showProperty("_LowIntensity");
 
-        GUILayout.Space(spacing);
-        EditorGUILayout.LabelField("Outline", EditorStyles.boldLabel);
-        showProperty("_OutlineColor");
-        showPropertyGreaterZero("_OutlineSize");
+        //GUILayout.Space(spacing);
+        //EditorGUILayout.LabelField("Outline", EditorStyles.boldLabel);
+        //showProperty("_OutlineColor");
+        //showPropertyGreaterZero("_OutlineSize");
 
-        GUILayout.Space(spacing);
-        EditorGUILayout.LabelField("Hard Edge Light", EditorStyles.boldLabel);
-        showProperty("_RimColor");
-        showProperty("_RimAlpha");
-        showProperty("_RimPower");
-        showProperty("_RimDropOff");
+        //GUILayout.Space(spacing);
+        //EditorGUILayout.LabelField("Hard Edge Light", EditorStyles.boldLabel);
+        //showProperty("_RimColor");
+        //showProperty("_RimAlpha");
+        //showProperty("_RimPower");
+        //showProperty("_RimDropOff");
 
-        GUILayout.Space(spacing);
-        EditorGUILayout.LabelField("Soft Edge Light", EditorStyles.boldLabel);
-        showProperty("_FresnelColor");
-        showProperty("_FresnelBrightness");
-        showProperty("_FresnelPower");
-        showProperty("_FresnelShadowDropoff");
+        //GUILayout.Space(spacing);
+        //EditorGUILayout.LabelField("Soft Edge Light", EditorStyles.boldLabel);
+        //showProperty("_FresnelColor");
+        //showProperty("_FresnelBrightness");
+        //showProperty("_FresnelPower");
+        //showProperty("_FresnelShadowDropoff");
 
         /*GUILayout.Space(spacing);
         EditorGUILayout.LabelField("Vertical Gradient", EditorStyles.boldLabel);
