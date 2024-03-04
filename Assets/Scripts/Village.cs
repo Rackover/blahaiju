@@ -79,6 +79,7 @@ public class Village : MonoBehaviour
 
                 Vector3 direction = car.transform.position - transform.position;
 
+                car.Hurt(false, false);
                 car.body.AddForce(direction.normalized * car.villageThrowbackForce, ForceMode.Impulse);
                 return;
             }

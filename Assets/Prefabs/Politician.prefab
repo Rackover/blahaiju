@@ -126,7 +126,7 @@ MonoBehaviour:
   scoreValue: 1000
   gibs: {fileID: 3394101370320394425}
   agent: {fileID: 5347244420747212702}
-  lives: 75
+  lives: 50
   blahajBumpForce: 130
   collisionEventTransmitter: {fileID: 2232479629483132572}
 --- !u!114 &3394101370320394425
@@ -145,6 +145,8 @@ MonoBehaviour:
   - {fileID: 4396717011531431633}
   animator: {fileID: 3356639951943025935}
   bloodFX: {fileID: 3045370247138961755, guid: c47c23bbfa93ec746b58b00338eb2af0, type: 3}
+  explodeForce: 0
+  explodeSpread: 0
   chanceToKeepGib: 1
   chanceToBleed: 1
 --- !u!1 &3442271592232934119
