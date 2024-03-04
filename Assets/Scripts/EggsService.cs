@@ -8,6 +8,10 @@ public class EggsService : MonoBehaviour
 {
     public EnemiesService enemiesService;
     public EndPanel endPanel;
+
+    [SerializeField]
+    private AudioClip eggLossClip;
+
     public int Development => development;
 
     public bool GameFinished { private set; get; } = false;
@@ -131,6 +135,8 @@ public class EggsService : MonoBehaviour
 
     public void LoseEgg(Egg egg)
     {
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(eggLossClip);
+
         Debug.Log($"Lost egg ${egg}");
         if (development >= maxDevelopment)
         {
