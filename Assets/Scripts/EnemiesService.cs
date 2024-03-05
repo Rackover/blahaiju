@@ -47,6 +47,8 @@ public class EnemiesService : MonoBehaviour
 
     private void Awake()
     {
+		AudioListener.volume = 0.2f;
+		
         for (int i = 0; i < maxEnemiesPerType.Length; i++)
         {
             activeEnemies[maxEnemiesPerType[i].type] = new List<EnemyBehavior>();
